@@ -1,0 +1,14 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 38px;
+  background: var(--color-one);
+  border-radius: 50%;
+}
+
+.logo__img {
+  object-fit: cover;
+  object-position: center;
+}

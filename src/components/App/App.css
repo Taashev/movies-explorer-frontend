@@ -1,20 +1,26 @@
-body {
-  background: #202020;
+/* Root */
+:root {
+  --background-default-page: #202020;
+  --color-default-text: #fff;
+  --color-one: #3DDC84;
+  --color-two: #4285F4;
+  --color-three: #EE3465;
+  --color-four: #000;
 }
 
-.page {
-  /* Контейнер */
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 1280px;
-    min-width: 320px;
-    min-height: 100vh;
-    margin: 0 auto;
+/* body */
+body {
+  background: var(--background-default-page);
+}
+
+/* App */
+.app {
   /* Основные настройки страницы */
     display: flex;
     flex-direction: column;
-    color: #fff;
-    background: #202020;
+    min-height: 100vh;
+    color: var(--color-default-text);
+    background: var(--background-default-page-page);
   /* Настройка основного шрифта */
     font-family: "Inter", Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -24,4 +30,47 @@ body {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* container */
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0 70px;
+}
+
+/* link */
+.link {
+  color: var(--color-default-text);
+  text-decoration: none;
+}
+
+/* hover */
+.hover {
+  opacity: 1;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+.hover:hover {
+  opacity: .7;
+}
+
+/* link active */
+.link-active {
+  position: relative;
+  font-weight: 500;
+}
+@media(max-width: 768px) {
+  .link-active::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-default-text);
+  }
 }

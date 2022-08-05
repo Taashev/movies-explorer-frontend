@@ -6,3 +6,30 @@
 
 /* App */
 @import url("./components/App/App.css");
+
+/* Not Found */
+@import url('./components/NotFound/NotFound.css');
+
+/* Header */
+@import url("./components/Header/Header.css");
+
+/* Logo */
+@import url("./components/Logo/Logo.css");
+
+/* Navigation */
+@import url("./components/Navigation/Navigation.css");
+
+/* NavGuest */
+@import url("./components/Navigation/NavGuest/NavGuest.css");
+
+/* NavMain */
+@import url("./components/Navigation/NavMain/NavMain.css");
+
+/* Burger */
+@import url("./components/Navigation/Burger/Burger.css");
+
+/* Main */
+@import url("./components/Main/Main.css");
+
+/* Footer */
+@import url("./components/Footer/Footer.css");
