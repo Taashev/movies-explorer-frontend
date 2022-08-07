@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -7,11 +7,17 @@ import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
+  const location = useLocation();
+  const [locationMain, setLocationMain] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setLocationMain(location.pathname === '/')
+  }, [location]);
 
   return (
 		<div className="app">
-      <Header loggedIn={loggedIn} />
+      <Header location={locationMain} loggedIn={loggedIn} />
       <Switch>
         <Route exact path="/">
           <Main />

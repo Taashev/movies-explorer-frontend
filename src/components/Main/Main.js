@@ -1,11 +1,13 @@
+import Promo from "./Promo/Promo";
+import NavTab from "./NavTab/NavTab";
+import AboutProject from "./AboutProject/AboutProject";
+
 function Main() {
   return (
     <main className="main">
-      <div className="main__container container">
-        <section className="intro">
-
-        </section>
-      </div>
+      <Promo />
+      <NavTab />
+      <AboutProject />
     </main>
   );
 };

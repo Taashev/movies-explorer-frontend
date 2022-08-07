@@ -28,8 +28,23 @@
 /* Burger */
 @import url("./components/Navigation/Burger/Burger.css");
 
+/* Title */
+@import url("./components/Main/Title/Title.css");
+
+/* Article */
+@import url("./components/Main/Article/Article.css");
+
 /* Main */
 @import url("./components/Main/Main.css");
+
+/* Promo */
+@import url("./components/Main/Promo/Promo.css");
+
+/* NavTab */
+@import url("./components/Main/NavTab/NavTab.css");
+
+/* AboutProject */
+@import url("./components/Main/AboutProject/AboutProject.css");
 
 /* Footer */
 @import url("./components/Footer/Footer.css");

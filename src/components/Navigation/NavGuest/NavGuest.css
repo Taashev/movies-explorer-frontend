@@ -19,7 +19,7 @@
   width: 76px;
   height: 32px;
   background-color: var(--color-one);
-  color: var(--color-four);
+  color: #000;
   border-radius: 3px;
   font-size: 12px;
   font-weight: 500;
@@ -28,7 +28,6 @@
 }
 .nav-guest__login_active {
   box-shadow: 0 0 5px var(--color-one);
-  color: var(--color-default-text);
 }
 
 @media(max-width: 426px) {

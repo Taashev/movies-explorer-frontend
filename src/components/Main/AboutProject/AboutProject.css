@@ -1,0 +1,114 @@
+.about-project__container {
+  padding: 110px 70px;
+}
+
+.about-project__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 550px));
+  justify-content: space-between;
+  gap: 40px;
+  grid-auto-flow: row;
+  margin-top: 70px;
+}
+
+.about-project__deadline {
+  display: flex;
+  margin: 110px 0 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.214;
+  text-align: center;
+}
+
+.about-prject__deadline-item {
+  width: 100%;
+  margin-bottom: 33px;
+  padding: 9px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.about-prject__deadline-item:nth-child(1) {
+  max-width: 20%;
+  color: var(--color-four);
+  background: var(--color-one);
+}
+.about-prject__deadline-item:nth-child(2) {
+  max-width: 80%;
+  background: var(--color-page-main-elements);
+}
+
+.about-prject__deadline-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -33px;
+  width: 100%;
+  color: #8B8B8B;
+  text-align: center;
+}
+.about-prject__deadline-item:nth-child(1)::after {
+  content: 'Back-end'
+}
+.about-prject__deadline-item:nth-child(2)::after {
+  content: 'Front-end'
+}
+
+@media(max-width: 769px) {
+  .about-project__container {
+    padding: 90px 50px;
+  }
+
+  .about-project__wrapper {
+    gap: 30px;
+  }
+
+  .about-project__deadline {
+    margin: 93px 0 0;
+  }
+
+  .about-prject__deadline-item:nth-child(1) {
+    max-width: 21%;
+  }
+}
+
+@media(max-width: 600px) {
+  .about-project__wrapper {
+    grid-template-columns: none;
+  }
+}
+
+@media(max-width: 600px) {
+  .about-project__deadline {
+    margin: 58px 0 0;
+    font-size: 11px;
+    line-height: 1.181;
+  }
+
+  .about-prject__deadline-item {
+    margin-bottom: 23px;
+    padding: 11px 10px;
+  }
+
+  .about-prject__deadline-item:nth-child(1) {
+    max-width: 35%;
+  }
+  .about-prject__deadline-item:nth-child(2) {
+    max-width: 65%;
+  }
+
+  .about-prject__deadline-item::after {
+    bottom: -23px;
+  }
+}
+
+@media(max-width: 426px) {
+  .about-project__container {
+    padding: 70px 18px;
+  }
+
+  .about-project__wrapper {
+    gap: 56px;
+    margin: 60px 0 0;
+  }
+}

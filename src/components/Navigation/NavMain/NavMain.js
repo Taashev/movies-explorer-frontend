@@ -7,21 +7,21 @@ function NavMain() {
       <button className="nav-main__button hover"></button>
       <ul className="nav-main__list">
         <li className="nav-main__item nav-main__item_invisible">
-          <NavLink exact to="/" className="nav-main__link link hover" activeClassName="link-active">Главная</NavLink>
+          <NavLink className="nav-main__link link hover" exact to="/" activeClassName="link-active" aria-label="На главную">Главная</NavLink>
         </li>
         <li className="nav-main__item">
-          <NavLink to="/movies" className="nav-main__link link hover" activeClassName="link-active">Фильмы</NavLink>
+          <NavLink className="nav-main__link link hover" to="/movies" activeClassName="link-active" aria-label="Фильмы">Фильмы</NavLink>
         </li>
         <li className="nav-main__item">
-          <NavLink to="/saved-movies" className="nav-main__link link hover" activeClassName="link-active">Сохранённые фильмы</NavLink>
+          <NavLink className="nav-main__link link hover" to="/saved-movies" activeClassName="link-active" aria-label="Сохранённые фильмы">Сохранённые фильмы</NavLink>
         </li>
       </ul>
       <div className="nav-main__profile">
-        <NavLink className="nav-main__link link hover" activeClassName="link-active" to="/profile">
+        <NavLink className="nav-main__link link hover" activeClassName="link-active" to="/profile" aria-label="Аккаунт">
           Аккаунт
         </NavLink>
         <NavLink className="nav-main__link link hover" to="/profile">
-          <img className="nav-main__profile-img" src={profileIco} alt="Профиль" />
+          <img className="nav-main__profile-img" src={profileIco} alt="Аккаунт" />
         </NavLink>
       </div>
     </div>

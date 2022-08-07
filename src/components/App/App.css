@@ -1,7 +1,16 @@
 /* Root */
 :root {
-  --background-default-page: #202020;
+  /* Плавный скрол по якорю */
+  scroll-behavior: smooth;
+
+  --color-page: #202020;
+  --color-subpage: #272727;
   --color-default-text: #fff;
+  --color-search-block: #2F2F2F;
+  --color-page-main-elements: #303030;
+  --color-border: #DADADA;
+  --color-movie-card: #222222;
+  --color-like: #EE3465;
   --color-one: #3DDC84;
   --color-two: #4285F4;
   --color-three: #EE3465;
@@ -10,7 +19,7 @@
 
 /* body */
 body {
-  background: var(--background-default-page);
+  background: var(--color-page);
 }
 
 /* App */
@@ -18,9 +27,10 @@ body {
   /* Основные настройки страницы */
     display: flex;
     flex-direction: column;
+    min-width: 320px;
     min-height: 100vh;
     color: var(--color-default-text);
-    background: var(--background-default-page-page);
+    background: var(--color-page);
   /* Настройка основного шрифта */
     font-family: "Inter", Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -32,14 +42,18 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* menu active = no scroll*/
+.no-scroll {
+  overflow: hidden;
+}
+
 /* container */
 .container {
-  box-sizing: border-box;
   width: 100%;
   max-width: 1280px;
-  min-width: 320px;
   margin: 0 auto;
   padding: 0 70px;
+  box-sizing: border-box;
 }
 
 /* link */
