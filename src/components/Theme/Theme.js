@@ -8,7 +8,7 @@ function Theme() {
   --color-subpage: #F5F5F5;
   --color-default-text: #000;
   --color-search-block: #F9F9F9;
-  --color-main-elements: #F2F2F2;
+  --color-page-main-elements: #E8E8E8;
   --color-border: #000;
   --color-movie: #FDFDFD;
   --color-one: #2BE080;
