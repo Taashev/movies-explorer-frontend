@@ -11,6 +11,22 @@
   margin-top: 70px;
 }
 
+.about-project__note {
+  width: 100%;
+}
+
+.about-project__note-title {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.about-project__note-text {
+  margin: 26px 0 0;
+  line-height: 1.428;
+}
+
 .about-project__deadline {
   display: flex;
   margin: 110px 0 0;
@@ -63,6 +79,12 @@
     gap: 30px;
   }
 
+  .about-project__note-text {
+    margin: 22px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
   .about-project__deadline {
     margin: 93px 0 0;
   }
@@ -110,5 +132,14 @@
   .about-project__wrapper {
     gap: 56px;
     margin: 60px 0 0;
+  }
+
+  .about-project__note-title {
+    font-size: 17px;
+  }
+
+  .about-project__note-text {
+    margin: 18px 0 0;
+    font-size: 11px;
   }
 }

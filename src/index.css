@@ -31,9 +31,6 @@
 /* Title */
 @import url("./components/Main/Title/Title.css");
 
-/* Article */
-@import url("./components/Main/Article/Article.css");
-
 /* Main */
 @import url("./components/Main/Main.css");
 
@@ -48,6 +45,9 @@
 
 /* Techs */
 @import url("./components/Main/Techs/Techs.css");
+
+/* AboutMe */
+@import url("./components/Main/AboutMe/AboutMe.css");
 
 /* Footer */
 @import url("./components/Footer/Footer.css");

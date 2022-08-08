@@ -1,5 +1,4 @@
 import Title from "../Title/Title";
-import Article from "../Article/Article";
 
 function AboutProject() {
   return (
@@ -7,14 +6,14 @@ function AboutProject() {
       <div className="about-project__container container">
         <Title>О проекте</Title>
         <div className="about-project__wrapper">
-          <Article>
-            <h3 className="article__title">Дипломный проект включал 5 этапов</h3>
-            <p className="article__text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
-          </Article>
-          <Article>
-            <h3 className="article__title">На выполнение диплома ушло 5 недель</h3>
-            <p className="article__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
-          </Article>
+          <div className="about-project__note">
+            <p className="about-project__note-title">Дипломный проект включал 5 этапов</p>
+            <p className="about-project__note-text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+          </div>
+          <div className="about-project__note">
+            <p className="about-project__note-title">На выполнение диплома ушло 5 недель</p>
+            <p className="about-project__note-text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+          </div>
         </div>
         <ul className="about-project__deadline">
           <li className="about-prject__deadline-item">1 неделя</li>
