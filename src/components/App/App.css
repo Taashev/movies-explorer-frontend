@@ -3,6 +3,7 @@
   /* Плавный скрол по якорю */
   scroll-behavior: smooth;
 
+  ---svg-invert: invert(0);
   --color-page: #202020;
   --color-subpage: #272727;
   --color-default-text: #fff;

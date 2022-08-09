@@ -4,6 +4,7 @@ function Theme() {
   const [theme, setTheme] = useState(``);
 
   const lightTheme = `
+  ---svg-invert: invert(1);
   --color-page: #fff;
   --color-subpage: #F5F5F5;
   --color-default-text: #000;

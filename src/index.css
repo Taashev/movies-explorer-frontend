@@ -49,5 +49,11 @@
 /* AboutMe */
 @import url("./components/Main/AboutMe/AboutMe.css");
 
+/* MyCard */
+@import url("./components/MyCard/MyCard.css");
+
+/* Portfolio */
+@import url("./components/Portfolio/Portfolio.css");
+
 /* Footer */
 @import url("./components/Footer/Footer.css");

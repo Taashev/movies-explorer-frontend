@@ -6,14 +6,14 @@ function Footer() {
         <div className="footer__bottom">
           <p className="footer__cop">&copy; 2022</p>
           <ul className="footer__list">
-            <li className="footer__item hover">
-              <a href="#" className="footer__link">Яндекс.Практикум</a>
+            <li className="footer__item">
+              <a className="footer__link link hover" href="https://practicum.yandex.ru/" target="blank">Яндекс.Практикум</a>
             </li>
-            <li className="footer__item hover">
-              <a href="#" className="footer__link">Github</a>
+            <li className="footer__item">
+              <a className="footer__link link hover" href="https://github.com/Taashev" target="blank">Github</a>
             </li>
-            <li className="footer__item hover">
-              <a href="#" className="footer__link">ВКонтакте</a>
+            <li className="footer__item">
+              <a className="footer__link link hover" href="https://vk.com/bear_hacki" target="blank">ВКонтакте</a>
             </li>
           </ul>
         </div>
