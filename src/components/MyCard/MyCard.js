@@ -20,7 +20,7 @@ function MyCard() {
         </address>
       </div>
       <picture>
-        <source srcset={myPhotoMobile} media="(max-width: 600px)" />
+        <source srcSet={myPhotoMobile} media="(max-width: 600px)" />
         <img className="my-card__photo" src={myPhoto} alt="фото студента" />
       </picture>
     </article>

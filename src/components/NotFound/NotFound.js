@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import NotFoundImg from '../../images/404.png';
 
 function NotFound() {
+  const history = useHistory();
+
   return (
     <div className="not-found">
-      <div className="not-found__container">
-        <h2 className="not-found__title">404</h2>
-        <p className="not-found__subtitle">Страница не найдена</p>
-      </div>
-      <Link className="not-found__button hover" to="/">Назад</Link>
+      <img className="not-found__img" src={NotFoundImg} alt="Ошибка 404. Страница не найдена" />
+      <p className="not-found__text">Страница не найдена</p>
+      <button className="not-found__button hover" onClick={() => history.goBack()}>Назад</button>
     </div>
   );
 };
