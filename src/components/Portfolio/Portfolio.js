@@ -1,3 +1,5 @@
+import IconsSvg from "../IconsSvg/IconsSvg";
+
 function Portfolio() {
   return (
     <aside className="portfolio">
@@ -6,16 +8,19 @@ function Portfolio() {
         <li className="portfolio__item">
           <a className="portfolio__link link hover" href="https://github.com/Taashev/how-to-learn" target="blank">
             Статичный сайт
+            <IconsSvg id="arrow-svg" mod="position_absolute" />
           </a>
         </li>
         <li className="portfolio__item">
           <a className="portfolio__link link hover" href="https://github.com/Taashev/russian-travel" target="blank">
             Адаптивный сайт
+            <IconsSvg id="arrow-svg" mod="position_absolute" />
           </a>
         </li>
         <li className="portfolio__item">
           <a className="portfolio__link link hover" href="https://github.com/Taashev/react-mesto-auth" target="blank">
             Одностраничное приложение
+            <IconsSvg id="arrow-svg" mod="position_absolute" />
           </a>
         </li>
       </ul>

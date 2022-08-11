@@ -1,14 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavGuest() {
  return (
   <div className="nav-guest">
-    <NavLink className="nav-guest__register link hover" activeClassName="link-active" to="/signup">
+    <Link className="nav-guest__link hover" to="/signup">
       Регистрация
-    </NavLink>
-    <NavLink className="nav-guest__login link hover" activeClassName="nav-guest__login_active" to="/signin">
+    </Link>
+    <Link className="nav-guest__link nav-guest__link_login hover" to="/signin">
       Войти
-    </NavLink>
+    </Link>
   </div>
  );
 };

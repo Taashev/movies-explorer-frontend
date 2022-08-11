@@ -1,9 +1,9 @@
-import LogoImage from "../../images/logo.svg";
+import IconsSvg from "../IconsSvg/IconsSvg";
 
 function Logo() {
   return (
-    <div className="logo">
-      <img className="logo__img" src={LogoImage} alt="Логотип" />
+    <div className="logo-wrapper">
+      <IconsSvg id="logo-svg" />
     </div>
   );
 };

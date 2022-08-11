@@ -4,17 +4,50 @@
 /* fonts */
 @import url("./vendor/fonts/Inter/inter.css");
 
+/* Preloader */
+@import url("./components/Preloader/Preloader.css");
+
+/* Button */
+@import url("./components/Button/Button.css");
+
+/* InconsSvg */
+@import url("./components/IconsSvg/IconsSvg.css");
+
+/* Notification */
+@import url("./components/Notification/Notification.css");
+
+/* Overlay */
+@import url("./components/Overlay/Overlay.css");
+
+/* Theme */
+@import url("./components/Theme/Theme.css");
+
+/* Not Found */
+@import url("./components/NotFound/NotFound.css");
+
+/* Form */
+@import url("./components/Form/Form.css");
+
+/* Input */
+@import url("./components/Form/Input/Input.css");
+
 /* App */
 @import url("./components/App/App.css");
 
-/* Not Found */
-@import url('./components/NotFound/NotFound.css');
+/* Register */
+@import url("./components/Register/Register.css");
+
+/* Login */
+@import url("./components/Login/Login.css");
 
 /* Header */
 @import url("./components/Header/Header.css");
 
 /* Logo */
 @import url("./components/Logo/Logo.css");
+
+/* Burger */
+@import url("./components/Burger/Burger.css");
 
 /* Navigation */
 @import url("./components/Navigation/Navigation.css");
@@ -24,9 +57,6 @@
 
 /* NavMain */
 @import url("./components/Navigation/NavMain/NavMain.css");
-
-/* Burger */
-@import url("./components/Navigation/Burger/Burger.css");
 
 /* Title */
 @import url("./components/Main/Title/Title.css");

@@ -1,21 +1,46 @@
-/* Root */
 :root {
   /* Плавный скрол по якорю */
   scroll-behavior: smooth;
+}
 
-  ---svg-invert: invert(0);
+#dark {
   --color-page: #202020;
   --color-subpage: #272727;
   --color-default-text: #fff;
+  --color-default-text-reverse: #000;
+  --color-notification: #fff;
+  --color-notification-text: #000;
   --color-search-block: #2F2F2F;
-  --color-page-main-elements: #303030;
-  --color-border: #DADADA;
+  --color-line-title: #DADADA;
+  --color-border: #424242;
   --color-movie-card: #222222;
   --color-like: #EE3465;
-  --color-one: #3DDC84;
-  --color-two: #4285F4;
-  --color-three: #EE3465;
-  --color-four: #000;
+  --color-error: #EE3465;
+  --color-success: #3DDC84;
+  --color-logo-wrapper: #3DDC84;
+  --color-set-theme-one: #3DDC84;
+  --color-set-theme-two: #4285F4;
+  --color-set-theme-three: #303030;
+}
+
+#light {
+  --color-page: #fff;
+  --color-subpage: #F5F5F5;
+  --color-default-text: #000;
+  --color-default-text-reverse: #fff;
+  --color-notification: #272727;
+  --color-notification-text: #fff;
+  --color-search-block: #F9F9F9;
+  --color-line-title: #000;
+  --color-border: #E8E8E8;
+  --color-movie-card: #FDFDFD;
+  --color-like: #EE3465;
+  --color-error: #EE3465;
+  --color-success: #3DDC84;
+  --color-logo-wrapper: #3DDC84;
+  --color-set-theme-one: #2BE080;
+  --color-set-theme-two: #3456F3;
+  --color-set-theme-three: #E8E8E8;
 }
 
 /* body */

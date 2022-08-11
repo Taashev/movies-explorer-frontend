@@ -29,6 +29,8 @@
 
 .about-project__deadline {
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
   margin: 110px 0 0;
   padding: 0;
   list-style: none;
@@ -45,13 +47,13 @@
 }
 
 .about-prject__deadline-item:nth-child(1) {
-  max-width: 20%;
-  color: var(--color-four);
-  background: var(--color-one);
+  width: 20%;
+  color: #000;
+  background: var(--color-set-theme-one);
 }
 .about-prject__deadline-item:nth-child(2) {
-  max-width: 80%;
-  background: var(--color-page-main-elements);
+  width: 80%;
+  background: var(--color-set-theme-three);
 }
 
 .about-prject__deadline-item::after {
@@ -90,7 +92,10 @@
   }
 
   .about-prject__deadline-item:nth-child(1) {
-    max-width: 21%;
+    width: 21%;
+  }
+  .about-prject__deadline-item:nth-child(2) {
+    width: 79%;
   }
 }
 
@@ -113,10 +118,10 @@
   }
 
   .about-prject__deadline-item:nth-child(1) {
-    max-width: 35%;
+    width: 35%;
   }
   .about-prject__deadline-item:nth-child(2) {
-    max-width: 65%;
+    width: 65%;
   }
 
   .about-prject__deadline-item::after {

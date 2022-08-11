@@ -6,7 +6,7 @@
   font-size: 22px;
   font-weight: 400;
   line-height: 1.227;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-line-title);
 }
 
 @media(max-width: 426px) {

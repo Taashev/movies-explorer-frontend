@@ -5,7 +5,7 @@ function Promo() {
     <section className="promo">
       <div className="promo__container container">
         <div className="promo__block">
-          <img className="promo__background" src={promoImg} alt="Промо логотип" />
+          <img className="promo__bg-img" src={promoImg} alt="Промо логотип" />
           <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
         </div>
       </div>

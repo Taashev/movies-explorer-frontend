@@ -4,21 +4,17 @@
   background: #073042;
 }
 
-.promo__container {
-  padding: 0 70px;
-  box-sizing: border-box;
-}
-
 .promo__block {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 730px;
   min-height: 320px;
-  margin-top: 82px;
+  margin: 82px auto 0;
   position: relative;
 }
 
-.promo__background {
+.promo__bg-img {
   display: block;
   width: 320px;
   height: 320px;
@@ -31,8 +27,7 @@
 }
 
 .promo__title {
-  max-width: 730px;
-  margin: 0 auto;
+  margin: 0;
   font-size: 47px;
   font-weight: 400;
   line-height: 1.16;
@@ -82,7 +77,7 @@
     margin-top: 142px;
   }
 
-  .promo__background {
+  .promo__bg-img {
     width: 248px;
     height: 248px;
     top: calc(50% - 124px);

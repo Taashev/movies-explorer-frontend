@@ -1,0 +1,21 @@
+.button {
+  width: min-content;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.214;
+  cursor: pointer;
+}
+
+.button_size_big {
+  width: 100%;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.button_color {
+  background: var(--color-set-theme-two);
+}

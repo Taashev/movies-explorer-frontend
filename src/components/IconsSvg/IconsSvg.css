@@ -1,0 +1,43 @@
+.svg {
+  cursor: pointer;
+  transition: .3s;
+}
+.svg:hover {
+  opacity: .8;
+}
+
+.logo-svg {
+  width: 14px;
+  height: 20px;
+  color: #fff;
+}
+
+.profile-svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+.profile-svg__bg {
+  width: 30px;
+  height: 30px;
+  color: #313131;
+}
+
+.arrow-svg {
+  width: 18px;
+  height: 17px;
+  color: var(--color-default-text);
+}
+.arrow-svg_position_absolute {
+  position: absolute;
+  top: 20px;
+  right: 3px;
+}
+
+@media(max-width: 426px) {
+  .arrow-svg_position_absolute {
+    top: 2px;
+    right: 5px;
+    width: 10px;
+  }
+}

@@ -2,7 +2,8 @@
   display: none;
 }
 
-.header_bg-main {
+.header_theme_page-main {
+  color: #fff;
   background: #073042;
 }
 

@@ -1,24 +1,24 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../Contexts/ThemeContexts";
 
-function Theme() {
-  const [theme, setTheme] = useState(``);
+function Theme({handleThemeChenge}) {
+  const theme = useContext(ThemeContext);
 
-  const lightTheme = `
-  ---svg-invert: invert(1);
-  --color-page: #fff;
-  --color-subpage: #F5F5F5;
-  --color-default-text: #000;
-  --color-search-block: #F9F9F9;
-  --color-page-main-elements: #E8E8E8;
-  --color-border: #000;
-  --color-movie: #FDFDFD;
-  --color-one: #2BE080;
-  --color-two: #3456F3;
-  --color-three: #EE3465;
-  --color-four: #000;
-  `;
-
-  document.documentElement.setAttribute('style', theme);
+  return (
+    <div className="theme">
+      <span className="theme__label">Тема:</span>
+      <div className="theme__toggle">
+        <label className="theme__item">
+          <input className="theme__control" type="radio" name="color-theme" value="light" onChange={handleThemeChenge} checked={theme === 'light' ? true : false} />
+          <span className="theme__text">Светлая</span>
+        </label>
+        <label className="theme__item">
+          <input className="theme__control" type="radio" name="color-theme" value="dark" onChange={handleThemeChenge} checked={theme === 'dark' ? true : false} />
+          <span className="theme__text">Тёмная</span>
+        </label>
+      </div>
+    </div>
+  )
 }
 
 export default Theme;

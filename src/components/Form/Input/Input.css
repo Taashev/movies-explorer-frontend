@@ -1,0 +1,80 @@
+.input-group {
+  display: block;
+  position: relative;
+}
+
+.input-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #8B8B8B;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 17px 0 0;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-default-text);
+}
+
+.input:focus {
+  border-color: var(--color-set-theme-two);
+}
+
+.input_border_bottom {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.input_error,
+.input_error.input:focus {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.input-error {
+  margin: 0;
+  min-height: 12px;
+  color: var(--color-error);
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-page) inset;
+  -webkit-text-fill-color: var(--color-default-text);
+  caret-color: var(--color-default-text);
+}
+
+
+/*! mod one-line */
+.input_one-line {
+  padding: 0 0 0 35px;
+  font-size: 11px;
+  line-height: 1.181;
+  text-align: right;
+}
+
+.input_one-line + .input-title {
+  top: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-default-text);
+}
+
+.input_one-line.input_border_bottom {
+  padding-bottom: 16px;
+}
+
+.input_one-line.input:focus {
+  border-color: var(--color-border);
+}
