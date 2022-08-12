@@ -34,7 +34,7 @@ function Register({ setHeaderDisable, setFooterDisable }) {
           <Form className="register__form" formName="register" onSubmit={onSubmit}>
             <Input
               inputTitle="Имя"
-              mods="border_bottom"
+              classNameInput="input_border_bottom"
               inputName="userName"
               type="text"
               required={true}
@@ -43,14 +43,14 @@ function Register({ setHeaderDisable, setFooterDisable }) {
               />
             <Input
               inputTitle="E-mail"
-              mods="border_bottom"
+              classNameInput="input_border_bottom"
               inputName="email"
               type="email"
               required={true}
               />
             <Input
               inputTitle="Пароль"
-              mods="border_bottom"
+              classNameInput="input_border_bottom"
               inputName="password"
               type="password"
               required={true}

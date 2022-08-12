@@ -1,5 +1,6 @@
 .input-group {
   display: block;
+  width: 100%;
   position: relative;
 }
 
@@ -53,28 +54,4 @@
   -webkit-box-shadow: 0 0 0 30px var(--color-page) inset;
   -webkit-text-fill-color: var(--color-default-text);
   caret-color: var(--color-default-text);
-}
-
-
-/*! mod one-line */
-.input_one-line {
-  padding: 0 0 0 35px;
-  font-size: 11px;
-  line-height: 1.181;
-  text-align: right;
-}
-
-.input_one-line + .input-title {
-  top: 3px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-default-text);
-}
-
-.input_one-line.input_border_bottom {
-  padding-bottom: 16px;
-}
-
-.input_one-line.input:focus {
-  border-color: var(--color-border);
 }

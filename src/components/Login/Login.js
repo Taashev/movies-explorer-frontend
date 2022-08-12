@@ -34,16 +34,16 @@ function Login({setHeaderDisable, setFooterDisable}) {
           <Form className="login__form" formName="login" onSubmit={onSubmit}>
             <Input
               inputTitle="E-mail"
+              classNameInput="input_border_bottom"
               type="email"
               inputName="email"
-              mods="border_bottom"
               required={true}
             />
             <Input
               inputTitle="Пароль"
+              classNameInput="input_border_bottom"
               type="password"
               inputName="password"
-              mods="border_bottom"
               required={true}
               minLength="2"
               maxLength="30"

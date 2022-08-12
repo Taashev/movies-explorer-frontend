@@ -6,7 +6,7 @@
   max-width: 396px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 10vh 30px;
+  padding: 10vh 0;
   box-sizing: border-box;
 }
 
@@ -19,6 +19,10 @@
 
 .register__form {
   flex-grow: 1;
+}
+
+.register__form .input-group:not(:last-of-type) {
+  margin-bottom: 8px;
 }
 
 .register__button {

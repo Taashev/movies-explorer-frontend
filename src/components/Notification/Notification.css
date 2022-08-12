@@ -54,18 +54,18 @@
   transform: translate(-50%) rotate(-45deg);
 }
 
-.notification__status {
+.notification__type {
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
 
-.notification__status_error {
+.notification__type_error {
   background: var(--color-error);
   box-shadow: 0 0 3px 1px var(--color-error);
 }
 
-.notification__status_success {
+.notification__type_success {
   background: var(--color-success);
   box-shadow: 0 0 3px 1px var(--color-success);
 }
@@ -84,18 +84,18 @@
   color: var(--color-success);
 }
 
-.notification__text {
+.notification__message {
   margin: auto;
   line-height: 1.2;
   text-align: center;
 }
-.notification__text:not(:last-child) {
+.notification__message:not(:last-child) {
   margin-bottom: 3px;
 }
-.notification__text_error {
+.notification__message_error {
   color: var(--color-error);
 }
-.notification__text_success {
+.notification__message_success {
   color: var(--color-success);
 }
 

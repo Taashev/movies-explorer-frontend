@@ -40,6 +40,9 @@
 /* Login */
 @import url("./components/Login/Login.css");
 
+/* Profile */
+@import url("./components/Profile/Profile.css");
+
 /* Header */
 @import url("./components/Header/Header.css");
 

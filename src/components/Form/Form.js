@@ -5,7 +5,6 @@ function Form({
   formName,
   onSubmit,
 }) {
-
   return (
     <form
       className={`form ${className}`}

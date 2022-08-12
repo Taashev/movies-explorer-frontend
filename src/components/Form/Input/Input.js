@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 function Input({
   inputTitle,
   classNameInput='',
-  mods = '',
   inputName,
   type = 'text',
   required = false,
@@ -9,21 +10,31 @@ function Input({
   minLength,
   maxLenght
 }) {
-  const inputMod = mods.split(' ').map((mod) => `input_${mod}`).join(' ');
+  const [value, setValue] = useState('');
+  const [validity, setValidity] = useState(true);
+  const [validationMessage, setValidationMessage] = useState('');
+
+  function handleChange(e) {
+    setValue(e.target.value);
+    setValidity(e.target.validity.valid);
+    setValidationMessage(e.target.validationMessage);
+  }
 
   return (
     <label className="input-group">
+      <span className="input-title">{inputTitle}</span>
       <input
-        className={`input ${classNameInput} ${mods ? inputMod : ''}`}
+        className={`input ${classNameInput} ${validity ? '' : 'input_error'}`}
         name={inputName}
         type={type}
+        value={value}
+        onChange={handleChange}
         required={required}
+        placeholder={placeholder}
         minLength={minLength}
         maxLength={maxLenght}
-        placeholder={placeholder}
         />
-      <span className="input-title">{inputTitle}</span>
-      <p className="input-error"></p>
+      <p className="input-error">{validationMessage}</p>
     </label>
   );
 };
