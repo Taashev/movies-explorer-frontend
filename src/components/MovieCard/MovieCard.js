@@ -16,15 +16,6 @@ function MovieCard({movie, ...props}) {
       <div className="movie__footer">
         <div className="movie__data">
           <h2 className="movie__name">{movie.nameRu}</h2>
-          {/* <button
-            className={`movie__favorites ${
-              props.button === "heart-svg"
-              ? (onFavorites ? 'movie__favorites_active' : '')
-              : ''}
-            `}
-            onClick={handleFavorites}>
-            <IconsSvg id={props.button} />
-          </button> */}
           {
             props.button === 'cross-svg'
               ? <button className="movie__btn-delete">
