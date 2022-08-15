@@ -1,25 +1,25 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
 import Button from "../Button/Button";
+import { DisableComponentsContext } from "../../Contexts/DisableComponentsContext";
 
-function Register({ setHeaderDisable, setFooterDisable }) {
+function Register() {
   const {path} = useRouteMatch();
+  const disableComponents = useContext(DisableComponentsContext);
 
   function onSubmit(e) {
     e.preventDefault();
   }
 
   useEffect(() => {
-    setHeaderDisable(true);
-    setFooterDisable(true);
+    disableComponents({header: true, footer: true});
 
     return () => {
-      setHeaderDisable(false);
-      setFooterDisable(false);
+      disableComponents({header: false, footer: false});
     }
   }, []);
 
@@ -57,7 +57,7 @@ function Register({ setHeaderDisable, setFooterDisable }) {
               minLength="2"
               maxLength="30"
               />
-            <Button className="register__button" mods="size_big color" type="submit">Зарегистрироваться</Button>
+            <Button className="register__button" type="submit">Зарегистрироваться</Button>
           </Form>
           <p className="register__footer">
             Уже зарегистрированы?
@@ -66,7 +66,7 @@ function Register({ setHeaderDisable, setFooterDisable }) {
         </main>
       </Route>
       <Route path={`${path}*`}>
-        <NotFound setHeaderDisable={setHeaderDisable} setFooterDisable={setFooterDisable} />
+        <NotFound />
       </Route>
     </Switch>
   );

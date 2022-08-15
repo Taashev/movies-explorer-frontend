@@ -49,11 +49,11 @@
 .about-prject__deadline-item:nth-child(1) {
   width: 20%;
   color: #000;
-  background: var(--color-set-theme-one);
+  background: var(--color-set-one);
 }
 .about-prject__deadline-item:nth-child(2) {
   width: 80%;
-  background: var(--color-set-theme-three);
+  background: var(--color-set-three);
 }
 
 .about-prject__deadline-item::after {

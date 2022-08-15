@@ -29,6 +29,12 @@
   position: relative;
 }
 
+.portfolio__link .arrow-svg {
+  position: absolute;
+  top: 20px;
+  right: 3px;
+}
+
 @media(max-width: 769px) {
   .portfolio__list {
     font-size: 28px;
@@ -50,5 +56,11 @@
 
   .portfolio__link {
     padding-right: 20px;
+  }
+
+  .portfolio__link .arrow-svg {
+    top: 2px;
+    right: 5px;
+    width: 10px;
   }
 }

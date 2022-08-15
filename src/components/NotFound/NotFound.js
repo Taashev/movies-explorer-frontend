@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { DisableComponentsContext } from '../../Contexts/DisableComponentsContext';
 import NotFoundImg from '../../images/404.png';
 
-function NotFound({ setHeaderDisable, setFooterDisable }) {
+function NotFound() {
   const history = useHistory();
+  const disableComponents = useContext(DisableComponentsContext);
 
   useEffect(() => {
-    setHeaderDisable(true);
-    setFooterDisable(true);
+    disableComponents({header: true, footer: true})
 
     return () => {
-      setHeaderDisable(false);
-      setFooterDisable(false);
+      disableComponents({header: false, footer: false})
     };
   }, [])
 

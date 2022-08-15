@@ -4,7 +4,7 @@
   gap: 10px;
   max-width: 204px;
   margin: 0 auto 0 30px;
-  color: var(--color-default-text);
+  color: var(--color-text);
 }
 
 .theme__toggle {
@@ -12,7 +12,7 @@
   gap: 2px;
   padding: 2px;
   box-sizing: border-box;
-  background-color: var(--color-subpage);
+  background-color: var(--color-search-switch-bg);
   border-radius: 15px;
 }
 
@@ -29,9 +29,15 @@
   z-index: 1;
   margin: 0;
   background: 0 0;
-  border: 0;
+  border: none;
+  outline: none;
+  border-radius: 10px;
   appearance: none;
   cursor: pointer;
+}
+
+.theme__control:focus-visible {
+  box-shadow: 0 0 5px var(--color-set-two);
 }
 
 .theme__text {

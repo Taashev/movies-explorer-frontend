@@ -4,6 +4,22 @@
   position: relative;
 }
 
+.show-password {
+  position: absolute;
+  top: 15px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.show-password + .input {
+  padding-right: 30px;
+}
+
 .input-title {
   position: absolute;
   top: 0;
@@ -21,11 +37,11 @@
   background: transparent;
   border: none;
   outline: none;
-  color: var(--color-default-text);
+  color: var(--color-text);
 }
 
 .input:focus {
-  border-color: var(--color-set-theme-two);
+  border-color: var(--color-set-two);
 }
 
 .input_border_bottom {
@@ -52,6 +68,6 @@
 .input:-webkit-autofill:focus,
 .input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--color-page) inset;
-  -webkit-text-fill-color: var(--color-default-text);
-  caret-color: var(--color-default-text);
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
 }

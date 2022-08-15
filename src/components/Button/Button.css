@@ -9,13 +9,3 @@
   line-height: 1.214;
   cursor: pointer;
 }
-
-.button_size_big {
-  width: 100%;
-  padding: 14px;
-  box-sizing: border-box;
-}
-
-.button_color {
-  background: var(--color-set-theme-two);
-}

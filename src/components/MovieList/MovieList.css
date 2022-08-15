@@ -1,0 +1,25 @@
+.movie-list {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, minmax(150px, 364px));
+  gap: 36px 24px;
+  padding: 80px 70px 10px;
+  box-sizing: border-box;
+}
+
+@media(max-width: 769px) {
+  .movie-list {
+    grid-template-columns: repeat(2, minmax(150px, 339px));
+    gap: 30px;
+    padding: 80px 30px 30px;
+  }
+}
+
+@media(max-width: 600px) {
+  .movie-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 339px));
+    justify-content: center;
+    gap: 11px;
+    padding: 50px 10px 25px;
+  }
+}

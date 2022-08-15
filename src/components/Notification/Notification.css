@@ -11,7 +11,7 @@
   right: -100%;
   z-index: 1000;
   background-color: var(--color-notification);
-  color: var(--color-notification-text);
+  color: var(--color-text-reverse);
   box-shadow: 0 0 2px 1px var(--color-notification);
   border-radius: 15px;
   transition: .7s;

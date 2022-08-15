@@ -1,0 +1,22 @@
+.movies__btn-more {
+  grid-column: 1/-1;
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 51px auto 73px;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+@media(max-width: 769px) {
+  .movies__btn-more {
+    margin-bottom: 98px;
+  }
+}

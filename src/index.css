@@ -10,7 +10,7 @@
 /* Button */
 @import url("./components/Button/Button.css");
 
-/* InconsSvg */
+/* IconsSvg */
 @import url("./components/IconsSvg/IconsSvg.css");
 
 /* Notification */
@@ -56,10 +56,7 @@
 @import url("./components/Navigation/Navigation.css");
 
 /* NavGuest */
-@import url("./components/Navigation/NavGuest/NavGuest.css");
-
-/* NavMain */
-@import url("./components/Navigation/NavMain/NavMain.css");
+@import url("./components/NavGuest/NavGuest.css");
 
 /* Title */
 @import url("./components/Main/Title/Title.css");
@@ -87,6 +84,21 @@
 
 /* Portfolio */
 @import url("./components/Portfolio/Portfolio.css");
+
+/* MovieCard */
+@import url("./components/MovieCard/MovieCard.css");
+
+/* MovieList */
+@import url("./components/MovieList/MovieList.css");
+
+/* Movies */
+@import url("./components/Movies/Movies.css");
+
+/* SavedMovies */
+@import url("./components/SavedMovies/SavedMovies.css");
+
+/* Search */
+@import url("./components/Search/Search.css");
 
 /* Footer */
 @import url("./components/Footer/Footer.css");

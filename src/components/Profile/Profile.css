@@ -30,7 +30,7 @@
   top: 3px;
   font-size: 11px;
   font-weight: 500;
-  color: var(--color-default-text);
+  color: var(--color-text);
 }
 
 .profile__form .input {
@@ -50,10 +50,11 @@
   margin: auto 0 0;
   font-size: 13px;
   line-height: 1.230;
+  color: var(--color-text);
 }
 
 .profile__button_type_exit {
-  margin: 10px 0 0;
+  margin-top: 10px;
   color: #EE3465;
 }
 

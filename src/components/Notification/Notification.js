@@ -1,5 +1,11 @@
+import { useEffect } from 'react';
+
 function Notification({config, onClose}) {
   const {isOpen, type, title, titleColor, message, messageColor} = config;
+
+  useEffect(() => {
+    isOpen && setTimeout(onClose, 8000);
+  }, [isOpen, type, title, titleColor, message, messageColor, onClose])
 
   return (
     <div className={`notification ${isOpen ? 'notification_active' : ''}`}>

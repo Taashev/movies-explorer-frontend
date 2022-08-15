@@ -1,36 +1,42 @@
 import { useEffect, useState } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
+// Context
 import { LoggedInContext } from '../../Contexts/LoggedInContext'
 import { ThemeContext } from '../../Contexts/ThemeContexts';
 import { StateMenuContext } from '../../Contexts/StateMenuContext';
+import { DisableComponentsContext } from '../../Contexts/DisableComponentsContext';
+import { ConfigNotificationContext } from '../../Contexts/ConfigNotificationContext';
 
+// Components
 import Overlay from '../Overlay/Overlay';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
 import Notification from '../Notification/Notification';
 
+// App
 function App() {
   const root = document.documentElement;
   const body = document.querySelector('body');
-  const location = useLocation().pathname;
   const [theme, setTheme] = useState('dark');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [stateMenu, setStateMenu] = useState(false);
+  const [disableComponents, setDisableComponents] = useState({ header: false, footer: false });
   const [configNotification, setConfigNotification] = useState({
     isOpen: false,
-    type: 'info',
+    type: '',
     title: '',
     titleColor: '',
     message: '',
     messageColor: ''
   });
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [stateMenu, setStateMenu] = useState(false);
-  const [headerDisable, setHeaderDisable] = useState(false);
-  const [footerDisable, setFooterDisable] = useState(false);
 
   function handleClickBurger() {
     setStateMenu(!stateMenu);
@@ -43,11 +49,11 @@ function App() {
   function closeAllPopup() {
     setConfigNotification({
       isOpen: false,
-      status: '',
+      type: '',
       title: '',
       titleColor: '',
-      text: '',
-      textColor: ''
+      message: '',
+      messageColor: ''
     });
   };
 
@@ -64,45 +70,52 @@ function App() {
   }, [theme, stateMenu]);
 
   return (
-		<LoggedInContext.Provider value={loggedIn}>
-		  <ThemeContext.Provider value={theme}>
-        <StateMenuContext.Provider value={stateMenu}>
+		<ConfigNotificationContext.Provider value={setConfigNotification}>
+		  <LoggedInContext.Provider value={loggedIn}>
+  		  <DisableComponentsContext.Provider value={setDisableComponents}>
+  		    <ThemeContext.Provider value={theme}>
+            <StateMenuContext.Provider value={stateMenu}>
 
-  		  <div className="app">
-          <Overlay />
-          <Notification config={configNotification} onClose={closeAllPopup} />
+      		  <div className="app">
+              <Overlay />
+              <Notification config={configNotification} onClose={closeAllPopup} />
 
-          <Header
-            location={location}
-            headerDisable={headerDisable}
-            onClickBurger={handleClickBurger} />
+              <Header
+                headerDisable={disableComponents.header}
+                onClickBurger={handleClickBurger} />
 
-          <Switch>
-            <Route path="/signup">
-              <Register setHeaderDisable={setHeaderDisable} setFooterDisable={setFooterDisable} />
-            </Route>
-            <Route path="/signin">
-              <Login setHeaderDisable={setHeaderDisable} setFooterDisable={setFooterDisable} />
-            </Route>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <Route path="/movies"></Route>
-            <Route path="/saved-movies"></Route>
-            <Route path="/profile">
-              <Profile setFooterDisable={setFooterDisable} />
-            </Route>
-            <Route path="*">
-              <NotFound setHeaderDisable={setHeaderDisable} setFooterDisable={setFooterDisable} />
-            </Route>
-          </Switch>
+              <Switch>
+                <Route path="/signup">
+                  <Register />
+                </Route>
+                <Route path="/signin">
+                  <Login />
+                </Route>
+                <Route exact path="/">
+                  <Main />
+                </Route>
+                <Route path="/movies">
+                  <Movies />
+                </Route>
+                <Route path="/saved-movies">
+                  <SavedMovies />
+                </Route>
+                <Route path="/profile">
+                  <Profile />
+                </Route>
+                <Route path="*">
+                  <NotFound />
+                </Route>
+              </Switch>
 
-          <Footer footerDisable={footerDisable} handleThemeChenge={handleThemeChenge} />
-    		</div>
+              <Footer footerDisable={disableComponents.footer} handleThemeChenge={handleThemeChenge} />
+        		</div>
 
-        </StateMenuContext.Provider>
-  		</ThemeContext.Provider>
-		</LoggedInContext.Provider>
+            </StateMenuContext.Provider>
+      		</ThemeContext.Provider>
+  		  </DisableComponentsContext.Provider>
+  		</LoggedInContext.Provider>
+		</ConfigNotificationContext.Provider>
   );
 };
 

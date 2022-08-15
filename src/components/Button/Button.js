@@ -1,13 +1,9 @@
-function Button({children, className='', type, mods=''}) {
-  const buttonMod = mods.split(' ').map((mod) => `button_${mod}`).join(' ');
-
+function Button({children, className='', ...props}) {
   return (
-    <button
-      className={`button ${className} ${mods ? buttonMod : ''}`}
-      type={type}>
-        {children}
+    <button className={`button ${className}`} {...props}>
+      {children}
     </button>
-  )
+  );
 };
 
 export default Button;
