@@ -1,0 +1,27 @@
+.header_disable {
+  display: none;
+}
+
+.header_theme_page-main {
+  color: #fff;
+  background: #073042;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 70px;
+}
+
+@media(max-width: 769px) {
+  .header__container {
+    padding: 18px 30px 18px;
+  }
+}
+
+@media(max-width: 426px) {
+  .header__container {
+    padding: 18px 14px;
+  }
+}

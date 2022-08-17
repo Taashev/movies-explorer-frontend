@@ -1,0 +1,104 @@
+/* normalize */
+@import url("./vendor/normalize.css");
+
+/* fonts */
+@import url("./vendor/fonts/Inter/inter.css");
+
+/* Preloader */
+@import url("./components/Preloader/Preloader.css");
+
+/* Button */
+@import url("./components/Button/Button.css");
+
+/* IconsSvg */
+@import url("./components/IconsSvg/IconsSvg.css");
+
+/* Notification */
+@import url("./components/Notification/Notification.css");
+
+/* Overlay */
+@import url("./components/Overlay/Overlay.css");
+
+/* Theme */
+@import url("./components/Theme/Theme.css");
+
+/* Not Found */
+@import url("./components/NotFound/NotFound.css");
+
+/* Form */
+@import url("./components/Form/Form.css");
+
+/* Input */
+@import url("./components/Form/Input/Input.css");
+
+/* App */
+@import url("./components/App/App.css");
+
+/* Register */
+@import url("./components/Register/Register.css");
+
+/* Login */
+@import url("./components/Login/Login.css");
+
+/* Profile */
+@import url("./components/Profile/Profile.css");
+
+/* Header */
+@import url("./components/Header/Header.css");
+
+/* Logo */
+@import url("./components/Logo/Logo.css");
+
+/* Burger */
+@import url("./components/Burger/Burger.css");
+
+/* Navigation */
+@import url("./components/Navigation/Navigation.css");
+
+/* NavGuest */
+@import url("./components/NavGuest/NavGuest.css");
+
+/* Title */
+@import url("./components/Main/Title/Title.css");
+
+/* Main */
+@import url("./components/Main/Main.css");
+
+/* Promo */
+@import url("./components/Main/Promo/Promo.css");
+
+/* NavTab */
+@import url("./components/Main/NavTab/NavTab.css");
+
+/* AboutProject */
+@import url("./components/Main/AboutProject/AboutProject.css");
+
+/* Techs */
+@import url("./components/Main/Techs/Techs.css");
+
+/* AboutMe */
+@import url("./components/Main/AboutMe/AboutMe.css");
+
+/* MyCard */
+@import url("./components/MyCard/MyCard.css");
+
+/* Portfolio */
+@import url("./components/Portfolio/Portfolio.css");
+
+/* MovieCard */
+@import url("./components/MovieCard/MovieCard.css");
+
+/* MovieList */
+@import url("./components/MovieList/MovieList.css");
+
+/* Movies */
+@import url("./components/Movies/Movies.css");
+
+/* SavedMovies */
+@import url("./components/SavedMovies/SavedMovies.css");
+
+/* Search */
+@import url("./components/Search/Search.css");
+
+/* Footer */
+@import url("./components/Footer/Footer.css");

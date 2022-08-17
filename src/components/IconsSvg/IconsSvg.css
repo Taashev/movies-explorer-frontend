@@ -1,0 +1,51 @@
+.logo-svg {
+  width: 14px;
+  height: 20px;
+  color: #fff;
+}
+
+.profile-svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+.profile-svg__bg {
+  width: 30px;
+  height: 30px;
+  color: #313131;
+}
+
+.arrow-svg {
+  width: 18px;
+  height: 17px;
+  color: var(--color-text);
+}
+
+.heart-svg {
+  width: 14px;
+  height: 12px;
+  color: transparent;
+  stroke: #424242;
+  transition: .2s;
+}
+
+.cross-svg {
+  width: 8px;
+  height: 8px;
+  color: var(--color-text);
+  transition: .2s;
+}
+
+.eye-show-svg {
+  width: 20px;
+  height: 20px;
+  color: transparent;
+  stroke: var(--color-text);
+}
+
+.eye-disable-svg {
+  width: 20px;
+  height: 20px;
+  color: transparent;
+  stroke: var(--color-text);
+}

@@ -1,0 +1,43 @@
+.nav-guest {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  max-width: 500px;
+}
+
+.nav-guest__link {
+  font-size: 12px;
+  line-height: 1.333;
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-guest__link_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 76px;
+  height: 32px;
+  background-color: var(--color-set-one);
+  color: #000;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+@media(max-width: 426px) {
+  .nav-guest {
+    gap: 14px;
+  }
+
+  .nav-guest__link {
+    font-size: 10px;
+  }
+
+  .nav-guest__link_login {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+  }
+}

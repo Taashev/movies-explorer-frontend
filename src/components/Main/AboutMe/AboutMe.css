@@ -1,0 +1,15 @@
+.about-me__container {
+  padding: 110px 70px 100px;
+}
+
+@media(max-width: 769px) {
+  .about-me__container {
+    padding: 90px 50px;
+  }
+}
+
+@media(max-width: 426px) {
+  .about-me__container {
+    padding: 70px 14px;
+  }
+}

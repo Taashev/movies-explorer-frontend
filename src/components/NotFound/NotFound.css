@@ -1,0 +1,52 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.not-found__img {
+  width: 400px;
+  height: 190px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.not-found__text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.187;
+  text-align: center;
+}
+
+.not-found__button {
+  margin-top: 90px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #4285F4;
+  line-height: 1.214;
+  text-decoration: none;
+}
+
+@media(max-width: 769px) {
+  .not-found__img {
+    width: 300px;
+  }
+
+  .not-found__text {
+    font-size: 12px;
+  }
+
+  .not-found__button {
+    margin-top: 30px;
+    font-size: 12px;
+  }
+}
+
+@media(max-width: 426px) {
+  .not-found__img {
+    width: 240px;
+  }
+}

@@ -1,0 +1,73 @@
+.input-group {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.show-password {
+  position: absolute;
+  top: 15px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.show-password + .input {
+  padding-right: 30px;
+}
+
+.input-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #8B8B8B;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 17px 0 0;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text);
+}
+
+.input:focus {
+  border-color: var(--color-set-two);
+}
+
+.input_border_bottom {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.input_error,
+.input_error.input:focus {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.input-error {
+  margin: 0;
+  min-height: 12px;
+  color: var(--color-error);
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-page) inset;
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
+}
