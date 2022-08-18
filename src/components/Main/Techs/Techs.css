@@ -72,6 +72,10 @@
 }
 
 @media(max-width: 426px) {
+  .techs {
+    background: var(--color-page);
+  }
+
   .techs__container {
     padding: 70px 18px;
   }

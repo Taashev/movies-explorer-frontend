@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 // Context
+import { CurrentUserContext } from '../../Contexts/CurrentUserContext';
 import { LoggedInContext } from '../../Contexts/LoggedInContext'
 import { ThemeContext } from '../../Contexts/ThemeContexts';
 import { StateMenuContext } from '../../Contexts/StateMenuContext';
 import { DisableComponentsContext } from '../../Contexts/DisableComponentsContext';
 import { ConfigNotificationContext } from '../../Contexts/ConfigNotificationContext';
+
+// API
+import MainApi from '../../utils/MainApi';
+import MoviesApi from '../../utils/MoviesApi';
 
 // Components
 import Overlay from '../Overlay/Overlay';
@@ -20,6 +26,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
 import Notification from '../Notification/Notification';
+import Preloader from '../Preloader/Preloader';
 
 // App
 function App() {
@@ -67,7 +74,7 @@ function App() {
     return () => {
       body.classList.remove('no-scroll');
     }
-  }, [theme, stateMenu]);
+  }, [loggedIn, theme, stateMenu]);
 
   return (
 		<ConfigNotificationContext.Provider value={setConfigNotification}>
@@ -94,14 +101,14 @@ function App() {
                 <Route exact path="/">
                   <Main />
                 </Route>
-                <Route path="/movies">
-                  <Movies />
+                <Route exact path="/movies">
+                  <ProtectedRoute component={Movies} />
                 </Route>
-                <Route path="/saved-movies">
-                  <SavedMovies />
+                <Route exact path="/saved-movies">
+                  <ProtectedRoute component={SavedMovies} />
                 </Route>
-                <Route path="/profile">
-                  <Profile />
+                <Route exact path="/profile">
+                  <ProtectedRoute component={Profile} />
                 </Route>
                 <Route path="*">
                   <NotFound />

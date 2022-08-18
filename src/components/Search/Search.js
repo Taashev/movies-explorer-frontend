@@ -23,7 +23,7 @@ function Search() {
       <div className="search__container container">
         <form className="search__form" name="search" method="get" onSubmit={handleSubmit}>
           <div className="search__wrapper">
-            <input className="search__input" name="search" type="search" placeholder="Фильм" value={valueSearch} onChange={handleValueSearch} />
+            <input className="search__input" name="search" type="search" placeholder="Фильм" required value={valueSearch} onChange={handleValueSearch} />
             <button className="search__button hover" type="submit">Найти</button>
           </div>
           <label className="search__short-films-wrapper">
