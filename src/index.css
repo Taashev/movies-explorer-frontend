@@ -7,9 +7,6 @@
 /* Preloader */
 @import url("./components/Preloader/Preloader.css");
 
-/* Button */
-@import url("./components/Button/Button.css");
-
 /* IconsSvg */
 @import url("./components/IconsSvg/IconsSvg.css");
 
@@ -30,6 +27,9 @@
 
 /* Input */
 @import url("./components/Form/Input/Input.css");
+
+/* InputPassword */
+@import url("./components/Form/InputPassword/InputPassword.css");
 
 /* App */
 @import url("./components/App/App.css");

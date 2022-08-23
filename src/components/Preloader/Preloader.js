@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Preloader = ({width='', height='', background, ...props}) => {
+const Preloader = ({width='', height='', ...props}) => {
 
   return (
     <div className="preloader">

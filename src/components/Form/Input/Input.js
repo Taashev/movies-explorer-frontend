@@ -1,9 +1,5 @@
-import { useState } from "react";
-import IconsSvg from "../../IconsSvg/IconsSvg";
-
 function Input({
   inputTitle,
-  classNameGroup='',
   classNameInput='',
   inputName,
   type = 'text',
@@ -11,57 +7,30 @@ function Input({
   placeholder,
   minLength,
   maxLenght,
-  ...props
+  value,
+  errorMessage,
+  onChange,
+  onBlur,
 }) {
-  const [value, setValue] = useState('');
-  const [validity, setValidity] = useState(true);
-  const [validationMessage, setValidationMessage] = useState('');
-
-  const [changeType, setChangeType] = useState(type);
-  const [showPassword, setShowPassword] = useState(false);
-
-  function handleChange(e) {
-    setValue(e.target.value);
-    setValidity(e.target.validity.valid);
-    setValidationMessage(e.target.validationMessage);
-  }
-
-  function showPasswordClick() {
-    setShowPassword(!showPassword);
-
-    !showPassword
-    ? setChangeType('text')
-    : setChangeType('password')
-  }
-
   return (
-    <label className="input-group">
-      <span className="input-title">{inputTitle}</span>
-      {
-        inputName === 'password' &&
-          <button
-            className={`show-password ${showPassword ? 'show-password_active' : ''}`}
-            onClick={showPasswordClick}>
-            {
-              showPassword
-                ? <IconsSvg id="eye-show-svg" />
-                : <IconsSvg id="eye-disable-svg" />
-            }
-          </button>
-      }
-      <input
-        className={`input ${classNameInput} ${validity ? '' : 'input_error'}`}
-        name={inputName}
-        type={changeType}
-        value={value}
-        onChange={handleChange}
-        required={required}
-        placeholder={placeholder}
-        minLength={minLength}
-        maxLength={maxLenght}
-        />
-      <p className="input-error">{validationMessage}</p>
-    </label>
+    <div className="input-container">
+      <label className="input-group">
+        <span className="input-title">{inputTitle}</span>
+        <input
+          className={`input ${classNameInput} ${errorMessage ? 'input_error' : ''}`}
+          name={inputName}
+          type={type}
+          value={value || ''}
+          required={required}
+          placeholder={placeholder}
+          minLength={minLength}
+          maxLength={maxLenght}
+          onChange={(e) => onChange(e)}
+          onBlur={(e) => onBlur(e)}
+          />
+        <p className="input-error">{errorMessage}</p>
+      </label>
+    </div>
   );
 };
 

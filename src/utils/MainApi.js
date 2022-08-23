@@ -1,85 +1,82 @@
 const BASEURL = 'https://api.movie.taashev.nomoredomains.xyz';
 
-const request = ({method='GET', point='', body}) => {
-  return fetch(`${BASEURL}${point}`, {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body)
-  })
-    .then((res) => {
-      if (res.ok) { return res.json() }
+const checkResponse = (res) => {
+  if (res.ok) { return res.json() }
 
-      throw Error(res.status);
-    })
+  return res.json().then((data) => {throw new Error(data.message)})
 };
 
+// register
 const register = (name, email, password) => {
-  return request({
+  return fetch(`${BASEURL}/signup`, {
     method: 'POST',
-    point: '/signup',
-    body: {
-      "name": name,
-      "email": email,
-      "password": password,
-    },
-  });
+    headers: {'Content-Type': 'application/json'},
+    credentials: 'include',
+    body: JSON.stringify({name, email, password})
+  }).then(checkResponse)
 };
 
+// login
 const login = (email, password) => {
-  return request({
+  return fetch(`${BASEURL}/signin`, {
     method: 'POST',
-    point: '/signin',
-    body: {
-      'email': email,
-      'password': password,
-    },
-  });
+    headers: {'Content-Type': 'application/json'},
+    credentials: 'include',
+    body: JSON.stringify({email, password})
+  }).then(checkResponse)
 };
 
+// logout
 const logout = () => {
-  return request({
-    point: '/signout',
-  });
+  return fetch(`${BASEURL}/signout`, {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'},
+    credentials: 'include',
+  }).then(checkResponse)
 };
 
+// user info
 const getUserInfo = () => {
-  return request({
-    point: '/users/me'
-  });
+  return fetch(`${BASEURL}/users/me`, {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'},
+    credentials: 'include',
+  }).then(checkResponse)
 };
 
+// update user
 const updateUser = (name, email) => {
-  return request({
+  return fetch(`${BASEURL}/users/me`, {
     method: 'PATCH',
-    point: '/users/me',
-    body: {
-      name: name,
-      email: email,
-    },
-  });
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name, email})
+  }).then(checkResponse)
 };
 
+// create saved movie
 const createSavedMovie = (movie) => {
-  return request({
+  return fetch(`${BASEURL}/movies`, {
     method: 'POST',
-    point: '/movies',
-    body: {...movie}
-  });
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({...movie})
+  }).then(checkResponse)
 };
 
+
+// get saved movies
 const getSavedMovies = () => {
-  return request({
-    point: '/movies/me',
-  });
+  return fetch(`${BASEURL}/movies/me`, {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'},
+  }).then(checkResponse)
 };
 
+// delete saved mocie
 const deleteSavedMovie = (movieId) => {
-  return request({
+  return fetch(`${BASEURL}/movies/${movieId}`, {
     method: 'DELETE',
-    point: `/movies/${movieId}`
-  });
+    headers: {'Content-Type': 'application/json'}
+  }).then(checkResponse)
 };
 
 const MainApi = {

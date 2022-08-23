@@ -21,7 +21,7 @@
   max-width: 410px;
 }
 
-.profile__form .input-group:not(:last-of-type) {
+.profile__form .input-container:not(:last-of-type) {
   margin-bottom: 10px;
   border-bottom: 1px solid var(--color-border);
 }

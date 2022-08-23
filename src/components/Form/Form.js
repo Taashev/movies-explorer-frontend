@@ -1,6 +1,6 @@
 function Form({
   children,
-  mothod = 'get',
+  method = 'get',
   className='',
   formName,
   onSubmit,
@@ -8,7 +8,7 @@ function Form({
   return (
     <form
       className={`form ${className}`}
-      method={mothod}
+      method={method}
       name={formName}
       onSubmit={onSubmit}
       noValidate>

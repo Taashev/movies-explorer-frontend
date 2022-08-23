@@ -6,7 +6,7 @@ import Navigation from '../Navigation/Navigation';
 import Burger from '../Burger/Burger';
 import NavGuest from '../NavGuest/NavGuest';
 
-function Header({ headerDisable, onClickBurger }) {
+function Header({ headerDisable, onBurgerClose, onClickBurger }) {
   const loggedIn = useContext(LoggedInContext);
   const location = useLocation().pathname;
   const locationMain = location === '/';
@@ -16,7 +16,7 @@ function Header({ headerDisable, onClickBurger }) {
     <header className={`header ${headerThemePageMain} ${headerDisable ? 'header_disable' : ''}`}>
       <div className="header__container container">
         { <Link className="hover" to="/" aria-label="На главную"><Logo /></Link> }
-        {loggedIn ? <Navigation onClickBurger={onClickBurger} /> : <NavGuest />}
+        {loggedIn ? <Navigation onBurgerClose={onBurgerClose} /> : <NavGuest />}
         {loggedIn && <Burger locationMain={locationMain} handleClickBurger={onClickBurger} />}
       </div>
     </header>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { StateMenuContext } from "../../Contexts/StateMenuContext";
 import IconsSvg from "../IconsSvg/IconsSvg";
 
-function Navigation({onClickBurger}) {
+function Navigation({onBurgerClose}) {
   const stateMenu = useContext(StateMenuContext);
   const menuOpen = stateMenu ? "nav_open" : '';
 
@@ -12,7 +12,7 @@ function Navigation({onClickBurger}) {
       return;
     }
 
-    onClickBurger();
+    onBurgerClose();
   }
 
   return (

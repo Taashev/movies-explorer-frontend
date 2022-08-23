@@ -5,7 +5,7 @@ function Notification({config, onClose}) {
 
   useEffect(() => {
     isOpen && setTimeout(onClose, 8000);
-  }, [isOpen, type, title, titleColor, message, messageColor, onClose])
+  }, [isOpen, onClose])
 
   return (
     <div className={`notification ${isOpen ? 'notification_active' : ''}`}>
