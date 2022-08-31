@@ -1,15 +1,14 @@
 import { useContext } from 'react';
-import { LoggedInContext } from '../../Contexts/LoggedInContext';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { AppContext } from '../../Contexts/AppContext';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import Burger from '../Burger/Burger';
 import NavGuest from '../NavGuest/NavGuest';
 
-function Header({ headerDisable, onBurgerClose, onClickBurger }) {
-  const loggedIn = useContext(LoggedInContext);
-  const location = useLocation().pathname;
-  const locationMain = location === '/';
+function Header({ headerDisable, currentPath, onBurgerClose, onClickBurger }) {
+  const {loggedIn} = useContext(AppContext);
+  const locationMain = currentPath === '/';
   const headerThemePageMain = locationMain ? 'header_theme_page-main' : '';
 
   return (

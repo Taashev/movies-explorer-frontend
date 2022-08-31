@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { Redirect } from "react-router-dom";
-import { LoggedInContext } from "../../Contexts/LoggedInContext"
+import { AppContext } from "../Contexts/AppContext";
 
 function UnauthoziedRoute({component: Component, ...props}) {
-  const loggedIn = useContext(LoggedInContext);
+  const {loggedIn} = useContext(AppContext);
 
   return (
     loggedIn

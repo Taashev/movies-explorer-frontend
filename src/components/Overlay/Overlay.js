@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { StateMenuContext } from '../../Contexts/StateMenuContext';
+import { AppContext } from '../../Contexts/AppContext';
 
 function Overlay() {
-  const stateMenu = useContext(StateMenuContext);
+  const {stateMenu} = useContext(AppContext);
   const overlayVisible = stateMenu ? 'overlay_visible' : '';
 
   return (

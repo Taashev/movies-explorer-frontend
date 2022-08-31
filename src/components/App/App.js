@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
-import AuthorizedRoute from '../AuthorizedRoute/AuthorizedRoute';
-import UnauthoziedRoute from '../UnauthoziedRoute/UnauthoziedRoute';
+import AuthorizedRoute from '../../Hoc/authorizedRoute';
+import UnauthoziedRoute from '../../Hoc/unauthoziedRoute';
 
 // Context
+import { AppContext } from '../../Contexts/AppContext'
 import { CurrentUserContext } from '../../Contexts/CurrentUserContext';
-import { LoggedInContext } from '../../Contexts/LoggedInContext'
-import { ThemeContext } from '../../Contexts/ThemeContexts';
-import { StateMenuContext } from '../../Contexts/StateMenuContext';
-import { DisableComponentsContext } from '../../Contexts/DisableComponentsContext';
 
 // API
 import MainApi from '../../utils/MainApi';
@@ -26,6 +23,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
 import { Toastify, renderToastify } from '../Toastify/Toastify';
+import { validCardFormat } from '../../utils/validCardFormat';
 
 // App
 function App() {
@@ -36,12 +34,13 @@ function App() {
   const currentPath = location.pathname;
 
   // use state
-  const [theme, setTheme] = useState('dark');
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [stateMenu, setStateMenu] = useState(false);
-  const [disableComponents, setDisableComponents] = useState({ header: false, footer: false });
-  const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [theme, setTheme] = useState('dark');
+  const [stateMenu, setStateMenu] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [disableComponents, setDisableComponents] = useState({header: false, footer: false});
+  const [savedMovies, setSavedMovies] = useState([]);
 
   // handle burger close
   function handleBurgerClose() {
@@ -58,8 +57,16 @@ function App() {
     let themeValue = theme.target.value;
 
     setTheme(themeValue);
-
     localStorage.setItem('theme', themeValue);
+  };
+
+  // handle loading timer
+  function isLoadingTimer(time=0) {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, [time])
   };
 
   // handle register
@@ -71,9 +78,7 @@ function App() {
       .catch((err) => {
         renderToastify('error', err.message)
       })
-      .finally(() => {
-        setIsLoading(false);
-      })
+      .finally(() => setIsLoading(false))
   };
 
   // handle login
@@ -86,38 +91,90 @@ function App() {
       .catch((err) => {
         renderToastify('error', err.message);
       })
-      .finally(() => {
-        setIsLoading(false);
-      })
+      .finally(() => setIsLoading(false))
   };
 
   // handle logout
   function handleLogout() {
     MainApi.logout()
-      .then((res) => {
+      .then(() => {
         setLoggedIn(false);
         history.push('/');
-        renderToastify('success', `${res.message}`);
+        localStorage.removeItem('Movies');
+        localStorage.removeItem('lastSearchValue');
+        localStorage.removeItem('lastSearchShortFilms');
+        renderToastify('info', `Вот и все.`);
       })
       .catch((err) => {
         renderToastify('error', err.message);
       })
-      .finally(() => {
-        setIsLoading(false);
-      })
+      .finally(() => setIsLoading(false))
   }
 
   // check token
   function checkAuth() {
-    MainApi.getUserInfo()
+    return MainApi.getUserInfo()
       .then(({name, email, _id}) => {
         setCurrentUser({name, email, _id})
         setLoggedIn(true);
         history.push(currentPath);
       })
-      .finally(() => {
-        setIsLoading(false);
+  };
+
+  // handle update user
+  function handleUpdateUser(name, email) {
+    MainApi.updateUser(name, email)
+      .then(({name, email}) => {
+        renderToastify('success', 'Данные обновлены!')
+        setCurrentUser({name, email})
       })
+      .catch((err) => {
+        renderToastify('error', err.message);
+      })
+      .finally(() => setIsLoading(false))
+  };
+
+  // handle movies
+  async function handleMovies() {
+    setIsLoading(true);
+
+    return await MoviesApi()
+      .then((res) => {
+        const formattedListCard = res.map((movie) => validCardFormat(movie));
+        localStorage.setItem('Movies', JSON.stringify(formattedListCard));
+      })
+      .catch(() => renderToastify('error', 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'))
+      .finally(() => setIsLoading(false))
+  };
+
+  // handle saved movies
+  function handleSavedMovies() {
+    MainApi.getSavedMovies()
+      .then((res) => {
+        setSavedMovies(res);
+      })
+      .catch((err) => {
+        renderToastify('error', err.message);
+      })
+      .finally(() => setIsLoading(false))
+  };
+
+  // handle add saved movies
+  function handleAddSavedMovie(movie) {
+    MainApi.setSavedMovies(movie)
+      .then((res) => {
+        setSavedMovies([res, ...savedMovies]);
+      })
+      .catch((err) => renderToastify('error', err.message))
+  };
+
+  // handle delete saved movies
+  function handleDeleteSavedMovie(movieId) {
+    MainApi.deleteSavedMovie(movieId)
+      .then((res) => {
+        setSavedMovies((state) => state.filter((movie) => movie.movieId !== res.movieId));
+      })
+      .catch((err) => renderToastify('error', err.message))
   };
 
   // component did mount
@@ -125,11 +182,14 @@ function App() {
     checkAuth();
   }, []);
 
+  // component did update loggenIn
+  useEffect(() => {
+    loggedIn && handleSavedMovies();
+  }, [loggedIn]);
+
   // component did update no-scroll
   useEffect(() => {
-    if(stateMenu) {
-      return body.classList.add('no-scroll');
-    }
+    if(stateMenu) return body.classList.add('no-scroll')
 
     return body.classList.remove('no-scroll');
   }, [body.classList, stateMenu]);
@@ -148,68 +208,75 @@ function App() {
   }, [root, theme]);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <LoggedInContext.Provider value={loggedIn}>
-        <DisableComponentsContext.Provider value={setDisableComponents}>
-          <ThemeContext.Provider value={theme}>
-            <StateMenuContext.Provider value={stateMenu}>
+    <AppContext.Provider value={{
+      loggedIn,
+      theme,
+      stateMenu,
+      isLoading,
+      setIsLoading,
+      isLoadingTimer,
+      handleSavedMovies,
+      disableComponents: setDisableComponents,
+      onAddSavedMovie: handleAddSavedMovie,
+      onDeletSavedMovie: handleDeleteSavedMovie,
+      savedMovies,
+    }}>
+      <CurrentUserContext.Provider value={currentUser}>
 
-            <div className="app">
-              <Overlay />
-              <Toastify />
+        <div className="app">
+          <Overlay />
+          <Toastify />
 
-              <Header
-                headerDisable={disableComponents.header}
-                onBurgerClose={handleBurgerClose}
-                onClickBurger={handleClickBurger} />
+          <Header
+            headerDisable={disableComponents.header}
+            onBurgerClose={handleBurgerClose}
+            onClickBurger={handleClickBurger}
+            currentPath={currentPath}
+          />
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route path="/signup">
+              <UnauthoziedRoute
+                component={Register}
+                onRegister={handleRegister}
+              />
+            </Route>
+            <Route path="/signin">
+              <UnauthoziedRoute
+                component={Login}
+                onLogin={handleLogin}
+              />
+            </Route>
+            <Route path="/movies">
+              <AuthorizedRoute
+                component={Movies}
+                handleMovies={handleMovies}
+              />
+            </Route>
+            <Route path="/saved-movies">
+              <AuthorizedRoute
+                component={SavedMovies}
+              />
+            </Route>
+            <Route path="/profile">
+              <AuthorizedRoute
+                component={Profile}
+                onUpdateUser={handleUpdateUser}
+                logout={handleLogout}
+              />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
 
-              <Switch>
-                <Route exact path="/">
-                  <Main />
-                </Route>
-                <Route path="/signup">
-                  <UnauthoziedRoute
-                    onRegister={handleRegister}
-                    isLoading={isLoading}
-                    setIsLoading={setIsLoading}
-                    component={Register}
-                  />
-                </Route>
-                <Route path="/signin">
-                  <UnauthoziedRoute
-                    onLogin={handleLogin}
-                    isLoading={isLoading}
-                    setIsLoading={setIsLoading}
-                    component={Login}
-                  />
-                </Route>
-                <Route path="/movies">
-                  <AuthorizedRoute component={Movies} />
-                </Route>
-                <Route path="/saved-movies">
-                  <AuthorizedRoute component={SavedMovies} />
-                </Route>
-                <Route path="/profile">
-                  <AuthorizedRoute
-                    component={Profile}
-                    logout={handleLogout}
-                    isLoading={isLoading}
-                    setIsLoading={setIsLoading}
-                  />
-                </Route>
-                <Route path="*">
-                  <NotFound />
-                </Route>
-              </Switch>
+          <Footer footerDisable={disableComponents.footer} handleThemeChenge={handleThemeChenge} />
+        </div>
 
-              <Footer footerDisable={disableComponents.footer} handleThemeChenge={handleThemeChenge} />
-            </div>
-
-            </StateMenuContext.Provider>
-          </ThemeContext.Provider>
-        </DisableComponentsContext.Provider>
-      </LoggedInContext.Provider>
-    </CurrentUserContext.Provider>
+      </CurrentUserContext.Provider>
+    </AppContext.Provider>
   );
 };
 

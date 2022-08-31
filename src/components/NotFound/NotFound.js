@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { DisableComponentsContext } from '../../Contexts/DisableComponentsContext';
+import { AppContext } from '../../Contexts/AppContext';
 import NotFoundImg from '../../images/404.png';
 
 function NotFound() {
   const history = useHistory();
-  const disableComponents = useContext(DisableComponentsContext);
+  const {disableComponents} = useContext(AppContext);
 
   useEffect(() => {
     disableComponents({header: true, footer: true})

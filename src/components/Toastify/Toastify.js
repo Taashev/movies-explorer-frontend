@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { ThemeContext } from '../../Contexts/ThemeContexts';
+import { AppContext } from '../../Contexts/AppContext';
 import 'react-toastify/dist/ReactToastify.css';
 
 function renderToastify(type, message) {
@@ -16,7 +16,7 @@ function renderToastify(type, message) {
 };
 
 function Toastify() {
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(AppContext);
 
   return <ToastContainer theme={theme} newestOnTop={false} />
 };

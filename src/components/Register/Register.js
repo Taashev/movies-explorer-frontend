@@ -1,17 +1,17 @@
 import { useContext, useEffect } from "react";
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
-import HandlerPreloader from "../HandlerPreloader/HandlerPreloader";
-import NotFound from "../NotFound/NotFound";
+import { AppContext } from "../../Contexts/AppContext";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
 import InputPassword from "../Form/InputPassword/InputPassword";
-import useFormValidation from "../../utils/useFormValidation";
-import { DisableComponentsContext } from "../../Contexts/DisableComponentsContext";
+import useFormValidation from "../../customHooks/useFormValidation";
+import Preloader from "../Preloader/Preloader";
+import NotFound from "../NotFound/NotFound";
 
-function Register({onRegister, isLoading, setIsLoading}) {
+function Register({onRegister}) {
   const {path} = useRouteMatch();
-  const disableComponents = useContext(DisableComponentsContext);
+  const {disableComponents, isLoading, setIsLoading} = useContext(AppContext);
   const {values, setValues, valid, errorMessages, setErrorMessages, onChange, onBlur} = useFormValidation();
 
   function onSubmit(e) {
@@ -86,7 +86,11 @@ function Register({onRegister, isLoading, setIsLoading}) {
               className="register__button button-reset hover"
               type="submit"
               disabled={isLoading ? true : false}>
-                <HandlerPreloader text="Зарегистрироваться" width={17} height={17} isLoading={isLoading} />
+                {
+                  isLoading
+                    ? <Preloader width={17} height={17} />
+                    : 'Зарегистрироваться'
+                }
             </button>
           </Form>
           <p className="register__footer">

@@ -10,9 +10,6 @@
 /* IconsSvg */
 @import url("./components/IconsSvg/IconsSvg.css");
 
-/* Notification */
-@import url("./components/Notification/Notification.css");
-
 /* Overlay */
 @import url("./components/Overlay/Overlay.css");
 
@@ -88,6 +85,12 @@
 /* MovieCard */
 @import url("./components/MovieCard/MovieCard.css");
 
+/* ButtonCardDelete */
+@import url("./components/MovieCard/ButtonCardDelete/ButtonCardDelete.css");
+
+/* ButtonCardLike */
+@import url("./components/MovieCard/ButtonCardLike/ButtonCardLike.css");
+
 /* MovieList */
 @import url("./components/MovieList/MovieList.css");
 
@@ -99,6 +102,9 @@
 
 /* Search */
 @import url("./components/Search/Search.css");
+
+/* ShortFilms */
+@import url("./components/Search/ShortFilms/ShortFilms.css");
 
 /* Footer */
 @import url("./components/Footer/Footer.css");

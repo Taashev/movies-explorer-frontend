@@ -1,17 +1,17 @@
 import { useContext, useEffect } from "react";
 import { useRouteMatch, Switch, Route, Link } from "react-router-dom";
-import { DisableComponentsContext } from "../../Contexts/DisableComponentsContext";
+import { AppContext } from "../../Contexts/AppContext";
 import NotFound from "../NotFound/NotFound";
-import HandlerPreloader from "../HandlerPreloader/HandlerPreloader";
+import Preloader from "../Preloader/Preloader";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
 import InputPassword from "../Form/InputPassword/InputPassword";
-import useFormValidation from "../../utils/useFormValidation";
+import useFormValidation from "../../customHooks/useFormValidation";
 
-function Login({onLogin, isLoading, setIsLoading}) {
+function Login({onLogin}) {
   const {path} = useRouteMatch();
-  const disableComponents = useContext(DisableComponentsContext);
+  const {disableComponents, isLoading, setIsLoading} = useContext(AppContext);
   const {values, setValues, valid, errorMessages, setErrorMessages, onChange, onBlur} = useFormValidation();
 
   function onSubmit(e) {
@@ -73,7 +73,11 @@ function Login({onLogin, isLoading, setIsLoading}) {
               className="login__button button-reset hover"
               type="submit"
               disabled={isLoading ? true : false}>
-                <HandlerPreloader text="Войти" width={17} height={17} isLoading={isLoading} />
+                {
+                  isLoading
+                    ? <Preloader width={17} height={17} />
+                    : 'Войти'
+                }
             </button>
           </Form>
           <p className="login__footer">

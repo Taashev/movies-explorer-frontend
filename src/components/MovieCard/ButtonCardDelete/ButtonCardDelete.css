@@ -1,0 +1,28 @@
+.button-card-delete {
+  width: 16px;
+  height: 14px;
+  opacity: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  transition: .3s;
+}
+.button-card-delete:hover,
+.button-card-delete:focus-visible {
+  opacity: 1;
+}
+
+.button-card-delete:hover .cross-svg,
+.button-card-delete:focus-visible .cross-svg  {
+  opacity: 1;
+  stroke: var(--color-like);
+  color: var(--color-like);
+}
+
+@media(max-width: 769px) {
+  .button-card-delete {
+    opacity: 1;
+  }
+}

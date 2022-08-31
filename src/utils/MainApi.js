@@ -49,33 +49,36 @@ const updateUser = (name, email) => {
   return fetch(`${BASEURL}/users/me`, {
     method: 'PATCH',
     headers: {'Content-Type': 'application/json'},
+    credentials: 'include',
     body: JSON.stringify({name, email})
   }).then(checkResponse)
 };
-
-// create saved movie
-const createSavedMovie = (movie) => {
-  return fetch(`${BASEURL}/movies`, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({...movie})
-  }).then(checkResponse)
-};
-
 
 // get saved movies
 const getSavedMovies = () => {
   return fetch(`${BASEURL}/movies/me`, {
     method: 'GET',
     headers: {'Content-Type': 'application/json'},
+    credentials: 'include',
   }).then(checkResponse)
 };
 
-// delete saved mocie
+// create saved movie
+const setSavedMovies = (movie) => {
+  return fetch(`${BASEURL}/movies`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    credentials: 'include',
+    body: JSON.stringify({...movie})
+  }).then(checkResponse)
+};
+
+// delete saved movie
 const deleteSavedMovie = (movieId) => {
   return fetch(`${BASEURL}/movies/${movieId}`, {
     method: 'DELETE',
-    headers: {'Content-Type': 'application/json'}
+    headers: {'Content-Type': 'application/json'},
+    credentials: 'include'
   }).then(checkResponse)
 };
 
@@ -85,7 +88,7 @@ const MainApi = {
   logout,
   getUserInfo,
   updateUser,
-  createSavedMovie,
+  setSavedMovies,
   getSavedMovies,
   deleteSavedMovie,
 };
