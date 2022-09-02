@@ -68,7 +68,7 @@
   color: #8B8B8B;
 }
 
-@media(max-width: 769px) {
+@media(max-width: 1280px) {
   .movie__footer {
     padding: 14px;
   }

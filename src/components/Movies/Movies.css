@@ -4,8 +4,7 @@
   flex-direction: column;
 }
 
-.movies .preloader,
-.movies .movie-list {
+.movies .preloader {
   flex-grow: 1;
 }
 

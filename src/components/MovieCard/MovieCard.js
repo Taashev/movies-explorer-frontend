@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../Contexts/AppContext";
 
 function MovieCard({movie, cardButton: Button}) {
@@ -12,12 +11,6 @@ function MovieCard({movie, cardButton: Button}) {
     const minutes = movie.duration % 60;
 
     return `${hours}ч ${minutes}м`;
-  };
-
-  function handleCardClick(e) {
-    if (e.target.closest('button')) return;
-
-    window.open(movie.trailerLink, '_blank');
   };
 
   function handleAddCard() {
@@ -33,9 +26,11 @@ function MovieCard({movie, cardButton: Button}) {
   }, [savedMovies]);
 
   return (
-    <article className="movie" tabIndex="0" onClick={handleCardClick}>
+    <article className="movie">
       <div className="movie__cover">
-        <img className="movie__image" src={movie.image} alt={movie.nameRU} />
+        <a href={movie.trailerLink} target='_blank' rel="noreferrer">
+          <img className="movie__image" src={movie.image} alt={movie.nameRU} />
+        </a>
       </div>
       <div className="movie__footer">
         <div className="movie__data">

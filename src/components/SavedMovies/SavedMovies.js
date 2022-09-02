@@ -66,11 +66,12 @@ function SavedMovies() {
             searchValue={searchValue}
             shortFilms={shortFilms}
             onShortFilms={handleShortFilms}
-          />
-          {
+          />         {
             isLoading
-             ? <Preloader width={50} height={50} />
-             : <MovieList renderMovies={renderMovies} savedMovies={savedMovies} cardButton={ButtonCardDelete} />
+             ?
+              <Preloader width={50} height={50} />
+             :
+              <MovieList renderMovies={renderMovies} savedMovies={savedMovies} cardButton={ButtonCardDelete} />
           }
         </main>
       </Route>

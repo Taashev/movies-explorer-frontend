@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
-import AuthorizedRoute from '../../Hoc/authorizedRoute';
-import UnauthoziedRoute from '../../Hoc/unauthoziedRoute';
+import ProtectedRoute from '../../Hoc/ProtectedRoute';
 
 // Context
 import { AppContext } from '../../Contexts/AppContext'
@@ -85,8 +84,10 @@ function App() {
   function handleLogin(email, password) {
     MainApi.login(email, password)
       .then((res) => {
+        getUserInfo();
+        setLoggedIn(true);
+        history.push('/movies');
         renderToastify('success', `${res.name} приятного просмотра!`);
-        checkAuth();
       })
       .catch((err) => {
         renderToastify('error', err.message);
@@ -99,7 +100,6 @@ function App() {
     MainApi.logout()
       .then(() => {
         setLoggedIn(false);
-        history.push('/');
         localStorage.removeItem('Movies');
         localStorage.removeItem('lastSearchValue');
         localStorage.removeItem('lastSearchShortFilms');
@@ -111,13 +111,20 @@ function App() {
       .finally(() => setIsLoading(false))
   }
 
-  // check token
-  function checkAuth() {
+  // get user info
+  function getUserInfo() {
     return MainApi.getUserInfo()
       .then(({name, email, _id}) => {
-        setCurrentUser({name, email, _id})
+        setCurrentUser({name, email, _id});
+      })
+  }
+
+  // check token
+  function checkAuth() {
+    getUserInfo()
+      .then(() => {
         setLoggedIn(true);
-        history.push(currentPath);
+        // history.push(currentPath);
       })
   };
 
@@ -213,13 +220,13 @@ function App() {
       theme,
       stateMenu,
       isLoading,
+      savedMovies,
       setIsLoading,
       isLoadingTimer,
       handleSavedMovies,
       disableComponents: setDisableComponents,
       onAddSavedMovie: handleAddSavedMovie,
       onDeletSavedMovie: handleDeleteSavedMovie,
-      savedMovies,
     }}>
       <CurrentUserContext.Provider value={currentUser}>
 
@@ -238,30 +245,28 @@ function App() {
               <Main />
             </Route>
             <Route path="/signup">
-              <UnauthoziedRoute
-                component={Register}
+              <Register
                 onRegister={handleRegister}
               />
             </Route>
             <Route path="/signin">
-              <UnauthoziedRoute
-                component={Login}
+              <Login
                 onLogin={handleLogin}
               />
             </Route>
-            <Route path="/movies">
-              <AuthorizedRoute
+            <Route exact path="/movies">
+              <ProtectedRoute
                 component={Movies}
                 handleMovies={handleMovies}
               />
             </Route>
-            <Route path="/saved-movies">
-              <AuthorizedRoute
+            <Route exact path="/saved-movies">
+              <ProtectedRoute
                 component={SavedMovies}
               />
             </Route>
-            <Route path="/profile">
-              <AuthorizedRoute
+            <Route exact path="/profile">
+              <ProtectedRoute
                 component={Profile}
                 onUpdateUser={handleUpdateUser}
                 logout={handleLogout}

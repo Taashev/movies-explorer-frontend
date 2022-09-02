@@ -26,9 +26,15 @@ function Search({
               value={searchValue || ''}
               onChange={(e) => handleValueSearch(e)}
             />
-            <button className="search__button hover" type="submit" disabled={isLoading ? true : false}>Найти</button>
+            <button
+              className="search__button hover"
+              type="submit"
+              disabled={isLoading ? true : false}
+            >
+                Найти
+            </button>
           </div>
-          <ShortFilms checked={shortFilms} onShortFilms={onShortFilms} />
+          <ShortFilms shortFilms={shortFilms} onShortFilms={onShortFilms} />
         </form>
       </div>
     </section>

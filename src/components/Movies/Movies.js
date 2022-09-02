@@ -61,9 +61,9 @@ function Movies({
 
     if (!valid) return setFormValidation(valid);
 
-    isLoadingTimer(500);
     if (!localStorage.getItem('Movies')) await handleMovies();
 
+    isLoadingTimer(500);
     setFormValidation(valid);
     localStorage.setItem('lastSearchValue', searchValue);
     searchResult = handleFilterKeyword();
@@ -111,17 +111,17 @@ function Movies({
             onShortFilms={handleShortFilms}
           />
           {
-            localStorage.getItem('Movies') && (
-              isLoading
-                ? <Preloader width={50} height={50} />
-                : <>
-                    <MovieList renderMovies={renderMovies.slice(0, renderMoviesCount)} cardButton={ButtonCardLike} />
-                    {
-                      renderButtonMore &&
-                        <button className="movies__btn-more hover" type="button" onClick={handleMoreClick}>Ещё</button>
-                    }
-                  </>
-            )
+            isLoading
+              ?
+                <Preloader width={50} height={50} />
+              :
+                localStorage.getItem('Movies') && <>
+                  <MovieList renderMovies={renderMovies.slice(0, renderMoviesCount)} cardButton={ButtonCardLike} />
+                  {
+                    renderButtonMore &&
+                      <button className="movies__btn-more hover" type="button" onClick={handleMoreClick}>Ещё</button>
+                  }
+                </>
           }
         </main>
       </Route>

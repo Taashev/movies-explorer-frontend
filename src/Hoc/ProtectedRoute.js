@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { AppContext } from "../Contexts/AppContext";
 
-function AuthorizedRoute({component: Component, ...props}) {
+function ProtectedRoute({component: Component, ...props}) {
   const {loggedIn} = useContext(AppContext);
 
   return loggedIn
@@ -10,4 +10,4 @@ function AuthorizedRoute({component: Component, ...props}) {
     : <Redirect to="/" />
 };
 
-export default AuthorizedRoute;
+export default ProtectedRoute;
