@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { AppContext } from "../../Contexts/AppContext";
 import Search from "../Search/Search";
@@ -8,7 +8,6 @@ import MovieList from "../MovieList/MovieList";
 import ButtonCardDelete from "../MovieCard/ButtonCardDelete/ButtonCardDelete";
 import NotFound from "../NotFound/NotFound";
 import Preloader from "../Preloader/Preloader";
-import { useEffect } from "react";
 
 function SavedMovies() {
   const {path} = useRouteMatch();
@@ -66,7 +65,8 @@ function SavedMovies() {
             searchValue={searchValue}
             shortFilms={shortFilms}
             onShortFilms={handleShortFilms}
-          />         {
+          />
+          {
             isLoading
              ?
               <Preloader width={50} height={50} />

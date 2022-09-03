@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import ProtectedRoute from '../../Hoc/ProtectedRoute';
+import UnauthoziedRoute from '../../Hoc/UnauthoziedRoute'
 
 // Context
 import { AppContext } from '../../Contexts/AppContext'
@@ -124,7 +125,7 @@ function App() {
     getUserInfo()
       .then(() => {
         setLoggedIn(true);
-        // history.push(currentPath);
+        history.push(currentPath);
       })
   };
 
@@ -245,27 +246,29 @@ function App() {
               <Main />
             </Route>
             <Route path="/signup">
-              <Register
+              <UnauthoziedRoute
+                component={Register}
                 onRegister={handleRegister}
               />
             </Route>
             <Route path="/signin">
-              <Login
+              <UnauthoziedRoute
+                component={Login}
                 onLogin={handleLogin}
               />
             </Route>
-            <Route exact path="/movies">
+            <Route path="/movies">
               <ProtectedRoute
                 component={Movies}
                 handleMovies={handleMovies}
               />
             </Route>
-            <Route exact path="/saved-movies">
+            <Route path="/saved-movies">
               <ProtectedRoute
                 component={SavedMovies}
               />
             </Route>
-            <Route exact path="/profile">
+            <Route path="/profile">
               <ProtectedRoute
                 component={Profile}
                 onUpdateUser={handleUpdateUser}

@@ -7,6 +7,12 @@ function NotFound() {
   const history = useHistory();
   const {disableComponents} = useContext(AppContext);
 
+  function redirect() {
+    if (history.length <= 2) return history.push('/');
+
+    return history.goBack();
+  };
+
   useEffect(() => {
     disableComponents({header: true, footer: true})
 
@@ -19,7 +25,7 @@ function NotFound() {
     <div className="not-found">
       <img className="not-found__img" src={NotFoundImg} alt="Ошибка 404. Страница не найдена" />
       <p className="not-found__text">Страница не найдена</p>
-      <button className="not-found__button hover" onClick={() => history.goBack()} type="button" aria-label="Вернуться на предыдущую страницу">
+      <button className="not-found__button hover" onClick={() => redirect()} type="button" aria-label="Вернуться на предыдущую страницу">
         Назад
       </button>
     </div>
@@ -27,3 +33,8 @@ function NotFound() {
 };
 
 export default NotFound;
+
+
+/*
+
+*/
