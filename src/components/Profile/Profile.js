@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { useRouteMatch, Switch, Route } from "react-router-dom";
 import { AppContext } from "../../Contexts/AppContext";
 import { CurrentUserContext } from "../../Contexts/CurrentUserContext";
+import {REGEX_EMAIL} from "../../utils/constants";
 import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
 import NotFound from "../NotFound/NotFound";
@@ -35,8 +36,8 @@ function Profile({logout, onUpdateUser}) {
   };
 
   useEffect(() => {
-    disableComponents({footer: true, ...disableComponents});
     setValues({name, email});
+    disableComponents({footer: true, ...disableComponents});
 
     return () => {
       disableComponents({footer: false, ...disableComponents})
@@ -63,13 +64,14 @@ function Profile({logout, onUpdateUser}) {
             />
             <Input
               inputTitle="E-mail"
-              type="email"
+              type="text"
               inputName="email"
               required={true}
               value={values.email}
               onChange={onChange}
               onBlur={onBlur}
               errorMessage={errorMessages.email}
+              pattern={REGEX_EMAIL}
             />
             <button
               className="profile__button button-reset hover"

@@ -7,17 +7,17 @@ function useWindowWidth() {
     setWindowWidth(window.innerWidth);
   };
 
-  function addEventListener() {
+  function handleAddEventListenerResize() {
     window.addEventListener('resize', handleWindowWidth)
   };
 
-  function removeEventListener() {
+  function handleRemoveEventListenerResize() {
     window.removeEventListener('resize', handleWindowWidth)
   };
 
   return {
-    addEventListener,
-    removeEventListener,
+    handleAddEventListenerResize,
+    handleRemoveEventListenerResize,
     windowWidth,
   };
 };

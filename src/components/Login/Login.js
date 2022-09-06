@@ -8,6 +8,7 @@ import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
 import InputPassword from "../Form/InputPassword/InputPassword";
 import useFormValidation from "../../customHooks/useFormValidation";
+import { REGEX_EMAIL } from "../../utils/constants";
 
 function Login({onLogin}) {
   const {path} = useRouteMatch();
@@ -54,13 +55,14 @@ function Login({onLogin}) {
             <Input
               inputTitle="E-mail"
               classNameInput="input_border_bottom"
-              type="email"
+              type="text"
               inputName="email"
               required={true}
               value={values.email}
               errorMessage={errorMessages.email}
               onChange={onChange}
               onBlur={onBlur}
+              pattern={REGEX_EMAIL}
             />
             <InputPassword
               classNameInput="input-pass__input_border_bottom"

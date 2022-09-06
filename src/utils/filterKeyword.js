@@ -10,19 +10,8 @@ function filterKeyword(list, keyword) {
     const checkNameEN = movie.nameEN
       ? movie.nameEN.toLowerCase().includes(searchValue)
       : false;
-    const checkDirector = movie.director
-      ? movie.director.toLowerCase().includes(searchValue)
-      : false;
-    const checkCountry = movie.country
-      ? movie.country.toLowerCase().includes(searchValue)
-      : false;
 
-    if (
-        checkNameRU
-        || checkNameEN
-        || checkDirector
-        || checkCountry
-      ) {return movie}
+    if (checkNameRU || checkNameEN) return movie;
   });
 
 };

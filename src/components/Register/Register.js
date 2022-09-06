@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import { AppContext } from "../../Contexts/AppContext";
+import { REGEX_EMAIL } from "../../utils/constants";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
@@ -68,12 +69,13 @@ function Register({onRegister}) {
               inputTitle="E-mail"
               classNameInput="input_border_bottom"
               inputName="email"
-              type="email"
+              type="text"
               required={true}
               value={values.email}
               errorMessage={errorMessages.email}
               onChange={onChange}
               onBlur={onBlur}
+              pattern={REGEX_EMAIL}
               />
             <InputPassword
               classNameInput="input-pass__input_border_bottom"

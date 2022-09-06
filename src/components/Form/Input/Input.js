@@ -11,6 +11,7 @@ function Input({
   errorMessage,
   onChange,
   onBlur,
+  pattern,
 }) {
   return (
     <div className="input-container">
@@ -27,6 +28,7 @@ function Input({
           maxLength={maxLenght}
           onChange={(e) => onChange(e)}
           onBlur={(e) => onBlur(e)}
+          pattern={pattern}
           />
         <p className="input-error">{errorMessage}</p>
       </label>

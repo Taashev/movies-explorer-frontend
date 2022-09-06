@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { AppContext } from "../../Contexts/AppContext";
+import { WINDOW_WIDTH_POINTS, COUNT_MOVIES, START_COUNT_MOVIES } from "../../utils/constants"
 import useWindowWidth from "../../customHooks/useWindowWidth";
 import filterKeyword from "../../utils/filterKeyword";
 import filterShortFilms from "../../utils/filterShortFilms";
@@ -15,7 +16,7 @@ function Movies({
 }) {
   const {path} = useRouteMatch();
   const {isLoading, isLoadingTimer} = useContext(AppContext);
-  const {windowWidth, addEventListener, removeEventListener} = useWindowWidth();
+  const {windowWidth, handleAddEventListenerResize, handleRemoveEventListenerResize} = useWindowWidth();
 
   const [formValidation, setFormValidation] = useState(true);
   const [searchValue, setSearchValue] = useState('');
@@ -25,7 +26,7 @@ function Movies({
   const [renderButtonMore, setRenderButtonMore] = useState(false);
 
   function handleMoreClick() {
-    const moreMoviesCount = windowWidth >= 1280 ? 3 : windowWidth >= 600 ? 2 : 1;
+    const moreMoviesCount = windowWidth >= WINDOW_WIDTH_POINTS.DESKTOP ? COUNT_MOVIES.DESKTOP : windowWidth >= WINDOW_WIDTH_POINTS.TABLET ? COUNT_MOVIES.TABLET : COUNT_MOVIES.MOBILE;
     setRenderMoviesCount(renderMoviesCount + moreMoviesCount);
   };
 
@@ -74,7 +75,7 @@ function Movies({
   };
 
   useEffect(() => {
-    setRenderMoviesCount(windowWidth >= 1280 ? 12 : windowWidth >= 600 ? 8 : 5);
+    setRenderMoviesCount(windowWidth >= WINDOW_WIDTH_POINTS.DESKTOP ? START_COUNT_MOVIES.DESKTOP : windowWidth >= WINDOW_WIDTH_POINTS.TABLET ? START_COUNT_MOVIES.TABLET : START_COUNT_MOVIES.MOBILE);
   }, [windowWidth]);
 
   useEffect(() => {
@@ -89,13 +90,13 @@ function Movies({
 
     setSearchValue(lastSearchValue ?? '');
     setShortFilms(lastSearchShortFilms ?? false);
-    addEventListener();
+    handleAddEventListenerResize();
 
     lastSearchShortFilms
       ? setRenderMovies(filterShortFilms(lastSearchResult))
       : setRenderMovies(lastSearchResult);
 
-    return () => removeEventListener();
+    return () => handleRemoveEventListenerResize();
   }, []);
 
   return (
