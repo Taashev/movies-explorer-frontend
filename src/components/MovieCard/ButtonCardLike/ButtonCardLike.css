@@ -1,0 +1,20 @@
+.button-card-like {
+  width: 16px;
+  height: 14px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.button-card-like:hover .heart-svg,
+.button-card-like:focus-visible .heart-svg {
+  stroke: var(--color-like);
+}
+
+.button-card-like_active .heart-svg {
+  color: var(--color-like);
+  stroke: var(--color-like);
+}

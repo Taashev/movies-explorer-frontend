@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../Contexts/ThemeContexts";
+import { AppContext } from "../../Contexts/AppContext";
 
 function Theme({handleThemeChenge}) {
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(AppContext);
 
   return (
     <div className="theme">

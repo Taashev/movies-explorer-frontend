@@ -1,1 +1,9 @@
+.saved-movies {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 
+.saved-movies .preloader {
+  flex-grow: 1;
+}

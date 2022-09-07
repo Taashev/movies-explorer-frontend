@@ -100,6 +100,18 @@ body {
   box-sizing: border-box;
 }
 
+/* button reset */
+.button-reset {
+  width: max-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 1.214;
+  cursor: pointer;
+}
+
 /* link */
 .link {
   color: var(--color-text);

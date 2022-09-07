@@ -1,35 +1,44 @@
-import { useState } from "react";
-import IconsSvg from "../IconsSvg/IconsSvg";
+import { useEffect, useState, useContext } from "react";
+import { AppContext } from "../../Contexts/AppContext";
 
-function MovieCard({movie, ...props}) {
-  const [onFavorites, setOnFavorites] = useState(false);
+function MovieCard({movie, cardButton: Button}) {
+  const {savedMovies, onAddSavedMovie, onDeletSavedMovie} = useContext(AppContext);
+  const [isSaved, setIsSaved] = useState(false);
+  let currentSavedMovie = savedMovies.find((savedMovie) => savedMovie.movieId === movie.movieId)
 
-  function handleFavorites() {
-    setOnFavorites(!onFavorites);
+  function timeConversion() {
+    const hours = Math.floor(movie.duration / 60);
+    const minutes = movie.duration % 60;
+
+    return `${hours}ч ${minutes}м`;
   };
 
+  function handleAddCard() {
+    onAddSavedMovie(movie);
+  };
+
+  function handleDeleteCard() {
+    onDeletSavedMovie(currentSavedMovie._id);
+  };
+
+  useEffect(() => {
+    setIsSaved(savedMovies.some((item) => item.movieId === movie.movieId));
+  }, [savedMovies]);
+
   return (
-    <article className="movie" tabIndex="0">
+    <article className="movie">
       <div className="movie__cover">
-        <img className="movie__image" src={movie.image} alt={movie.nameRu} />
+        <a href={movie.trailerLink} target='_blank' rel="noreferrer">
+          <img className="movie__image" src={movie.image} alt={movie.nameRU} />
+        </a>
       </div>
       <div className="movie__footer">
         <div className="movie__data">
-          <h2 className="movie__name">{movie.nameRu}</h2>
-          {
-            props.button === 'cross-svg'
-              ? <button className="movie__btn-delete">
-                  <IconsSvg id="cross-svg" />
-                </button>
-              : <button className={
-                  `movie__btn-favorites ${onFavorites ? 'movie__btn-favorites_active' : ''}`}
-                  onClick={handleFavorites}>
-                  <IconsSvg id="heart-svg" />
-                </button>
-          }
+          <h2 className="movie__name">{movie.nameRU}</h2>
+          <Button movie={movie} currentSavedMovie={currentSavedMovie} onAddCard={handleAddCard} onDeleteCard={handleDeleteCard} isSaved={isSaved} />
         </div>
         <div className="movie__meta">
-          <span className="movie__duration">{movie.duration}</span>
+          <span className="movie__duration">{timeConversion()}</span>
         </div>
       </div>
     </article>

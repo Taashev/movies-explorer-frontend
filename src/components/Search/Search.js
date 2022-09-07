@@ -1,36 +1,40 @@
-import {useState, useRef } from 'react';
+import { useContext } from "react";
+import { AppContext } from "../../Contexts/AppContext";
+import ShortFilms from "./ShortFilms/ShortFilms";
 
-function Search() {
-  const shortFilmsRef = useRef();
-  const [conditionShortFilms, setConditionShortFilms] = useState(false);
-  const [valueSearch, setValueSearch] = useState('');
-
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
-  function handleValueSearch(e) {
-    setValueSearch(e.target.value);
-  }
-
-  function handleShortFilms() {
-    setConditionShortFilms(!conditionShortFilms)
-    shortFilmsRef.current.checked = !conditionShortFilms;
-  }
+function Search({
+  onSubmit,
+  formValidation,
+  searchValue,
+  handleValueSearch,
+  shortFilms,
+  onShortFilms,
+}) {
+  const {isLoading} = useContext(AppContext);
 
   return (
     <section className="search">
       <div className="search__container container">
-        <form className="search__form" name="search" method="get" onSubmit={handleSubmit}>
+        <form className="search__form" name="search" method="get" onSubmit={onSubmit} noValidate>
           <div className="search__wrapper">
-            <input className="search__input" name="search" type="search" placeholder="Фильм" value={valueSearch} onChange={handleValueSearch} />
-            <button className="search__button hover" type="submit">Найти</button>
+            <input
+              className={`search__input ${formValidation ? '' : 'search__input_invalid'}`}
+              name="search"
+              type="search"
+              placeholder={formValidation ? `Фильм` : 'Нужно ввести ключевое слово'}
+              required
+              value={searchValue || ''}
+              onChange={(e) => handleValueSearch(e)}
+            />
+            <button
+              className="search__button hover"
+              type="submit"
+              disabled={isLoading ? true : false}
+            >
+                Найти
+            </button>
           </div>
-          <label className="search__short-films-wrapper">
-            <input className="search__short-films-switch" type="checkbox" name="short-films" ref={shortFilmsRef} />
-            <button className="search__short-films-switch-costum" type="button" onClick={handleShortFilms} aria-label="Чек-бокс короткометражные фильмы"></button>
-            <span className="search__short-films-text">Короткометражки</span>
-          </label>
+          <ShortFilms shortFilms={shortFilms} onShortFilms={onShortFilms} />
         </form>
       </div>
     </section>

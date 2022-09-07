@@ -1,22 +1,42 @@
 import { useContext, useEffect } from "react";
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
-import NotFound from "../NotFound/NotFound";
+import { AppContext } from "../../Contexts/AppContext";
+import { REGEX_EMAIL } from "../../utils/constants";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
-import Button from "../Button/Button";
-import { DisableComponentsContext } from "../../Contexts/DisableComponentsContext";
+import InputPassword from "../Form/InputPassword/InputPassword";
+import useFormValidation from "../../customHooks/useFormValidation";
+import Preloader from "../Preloader/Preloader";
+import NotFound from "../NotFound/NotFound";
 
-function Register() {
+function Register({onRegister}) {
   const {path} = useRouteMatch();
-  const disableComponents = useContext(DisableComponentsContext);
+  const {disableComponents, isLoading, setIsLoading} = useContext(AppContext);
+  const {values, setValues, valid, errorMessages, setErrorMessages, onChange, onBlur} = useFormValidation();
 
   function onSubmit(e) {
     e.preventDefault();
+    const inputInvalid = [];
+
+    if(!valid) {
+      for (let name in values) {
+				if (values[name].length <= 0) {
+					inputInvalid[name] = 'Заполните это поле.';
+				}
+			}
+
+			setErrorMessages({...errorMessages, ...inputInvalid});
+      return
+    }
+
+    setIsLoading(true);
+    onRegister(values.userName, values.email, values.password);
   }
 
   useEffect(() => {
     disableComponents({header: true, footer: true});
+    setValues({userName: '', email: '', password: ''});
 
     return () => {
       disableComponents({header: false, footer: false});
@@ -40,24 +60,40 @@ function Register() {
               required={true}
               minLength="2"
               maxLength="30"
+              value={values.userName}
+              errorMessage={errorMessages.userName}
+              onChange={onChange}
+              onBlur={onBlur}
               />
             <Input
               inputTitle="E-mail"
               classNameInput="input_border_bottom"
               inputName="email"
-              type="email"
+              type="text"
               required={true}
+              value={values.email}
+              errorMessage={errorMessages.email}
+              onChange={onChange}
+              onBlur={onBlur}
+              pattern={REGEX_EMAIL}
               />
-            <Input
-              inputTitle="Пароль"
-              classNameInput="input_border_bottom"
-              inputName="password"
-              type="password"
-              required={true}
-              minLength="2"
-              maxLength="30"
-              />
-            <Button className="register__button" type="submit">Зарегистрироваться</Button>
+            <InputPassword
+              classNameInput="input-pass__input_border_bottom"
+              value={values.password}
+              errorMessage={errorMessages.password}
+              onChange={onChange}
+              onBlur={onBlur}
+            />
+            <button
+              className="register__button button-reset hover"
+              type="submit"
+              disabled={isLoading ? true : false}>
+                {
+                  isLoading
+                    ? <Preloader width={17} height={17} />
+                    : 'Зарегистрироваться'
+                }
+            </button>
           </Form>
           <p className="register__footer">
             Уже зарегистрированы?

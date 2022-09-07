@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { StateMenuContext } from "../../Contexts/StateMenuContext";
+import { AppContext } from "../../Contexts/AppContext";
 
 function Burger({ locationMain, handleClickBurger }) {
-  const stateMenu = useContext(StateMenuContext);
+  const {stateMenu} = useContext(AppContext);
   const isOpen = stateMenu ? 'burger_active' : '';
   const burgetThemeMain = locationMain ? (isOpen ? '' : 'burger_theme_main') : '';
 

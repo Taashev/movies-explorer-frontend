@@ -1,14 +1,15 @@
 import React from 'react'
-import './Preloader.css'
 
-const Preloader = () => {
-    return (
-        <div className="preloader">
-            <div className="preloader__container">
-                <span className="preloader__round"></span>
-            </div>
-        </div>
-    )
+const Preloader = ({width='', height='', ...props}) => {
+
+  return (
+    <div className="preloader">
+      <div className="preloader__container" style={{width: width, height: height}}>
+        <div className="preloader__item"><i></i></div>
+        <div className="preloader__item"><i></i></div>
+      </div>
+    </div>
+  )
 };
 
 export default Preloader

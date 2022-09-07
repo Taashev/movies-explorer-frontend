@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { StateMenuContext } from "../../Contexts/StateMenuContext";
+import { AppContext } from "../../Contexts/AppContext";
 import IconsSvg from "../IconsSvg/IconsSvg";
 
-function Navigation({onClickBurger}) {
-  const stateMenu = useContext(StateMenuContext);
+function Navigation({onBurgerClose}) {
+  const {stateMenu} = useContext(AppContext);
   const menuOpen = stateMenu ? "nav_open" : '';
 
   function handleClickLink(e) {
@@ -12,7 +12,7 @@ function Navigation({onClickBurger}) {
       return;
     }
 
-    onClickBurger();
+    onBurgerClose();
   }
 
   return (
