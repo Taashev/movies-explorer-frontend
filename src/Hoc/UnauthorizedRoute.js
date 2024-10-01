@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { Redirect } from "react-router-dom";
 import { AppContext } from "../Contexts/AppContext";
 
-function UnauthoziedRoute({component: Component, ...props}) {
+function UnauthorizedRoute({component: Component, ...props}) {
   const {loggedIn} = useContext(AppContext);
 
   return (
@@ -12,4 +12,4 @@ function UnauthoziedRoute({component: Component, ...props}) {
   );
 };
 
-export default UnauthoziedRoute;
+export default UnauthorizedRoute;

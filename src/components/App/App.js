@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import ProtectedRoute from '../../Hoc/ProtectedRoute';
-import UnauthoziedRoute from '../../Hoc/UnauthoziedRoute'
+import UnauthorizedRoute from '../../Hoc/UnauthorizedRoute'
 
 // Context
 import { AppContext } from '../../Contexts/AppContext'
@@ -246,13 +246,13 @@ function App() {
               <Main />
             </Route>
             <Route path="/signup">
-              <UnauthoziedRoute
+              <UnauthorizedRoute
                 component={Register}
                 onRegister={handleRegister}
               />
             </Route>
             <Route path="/signin">
-              <UnauthoziedRoute
+              <UnauthorizedRoute
                 component={Login}
                 onLogin={handleLogin}
               />
