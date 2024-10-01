@@ -1,4 +1,4 @@
-const BASEURL = 'https://api.movie.taashev.nomoredomains.xyz';
+const BASEURL = 'http://taashev-movies-explorer.ru/';
 
 const checkResponse = (res) => {
   if (res.ok) { return res.json() }
